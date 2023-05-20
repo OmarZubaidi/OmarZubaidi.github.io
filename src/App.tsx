@@ -40,7 +40,7 @@ export default function App() {
             // It would use the same radius instead of n for the image and n + 2 for the container.
             <a key={name} href={link} rel="noopener noreferrer" className="flex-column items-center rounded-xl">
               <img src={image} alt={name + ' screenshot'} className="border-rose border-t-2 border-x-2 rounded-t-xl" />
-              <p className="border-rose border-x-2 font-bold pb-2 pt-5 text-xl text-center">{name}</p>
+              <p className="border-rose border-x-2 font-bold pb-2 pt-5 text-xl text-center text-rose">{name}</p>
               <p className="border-rose border-b-2 border-x-2 rounded-b-xl pb-5 text-center">{description}</p>
             </a>
           );
