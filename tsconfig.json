@@ -1,0 +1,17 @@
+{
+  "files": [],
+  "ignoreFiles": [
+    "**/build/*",
+    "**/coverage/*",
+    "**/dist/*",
+    "**/node_modules/*",
+    "**/.git/*",
+    "**/.github/*",
+    "**/.idea/*",
+    "**/.DS_Store/*"
+  ],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}

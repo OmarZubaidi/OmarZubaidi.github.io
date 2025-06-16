@@ -1,0 +1,63 @@
+{
+  "folders": [
+    {
+      "name": "Portfolio",
+      "path": "..",
+    },
+  ],
+  "settings": {
+    "[json]": {
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    },
+    "[javascript][typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[md][markdown]": {
+      "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+      "editor.wordWrap": "on",
+    },
+    "[mdx]": {
+      "editor.defaultFormatter": "unifiedjs.vscode-mdx",
+      "editor.wordWrap": "on",
+    },
+    "[yaml]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.codeActionsOnSave": {
+      "source.addMissingImports": "explicit",
+      "source.addMissingImports.ts": "explicit",
+      "source.fixAll.eslint": "explicit",
+      "source.fixAll.ts": "explicit",
+      "source.fixAll.markdownlint": "explicit",
+      "source.organizeImports": "explicit",
+      "source.sortImports": "explicit",
+    },
+    "editor.tabSize": 2,
+    "files.exclude": {
+      "node_modules": true,
+    },
+    "files.trimTrailingWhitespace": true,
+  },
+  "extensions": {
+    "recommendations": [
+      "Catppuccin.catppuccin-vsc",
+      "DavidAnson.vscode-markdownlint",
+      "PKief.material-icon-theme",
+      "VisualStudioExptTeam.vscodeintellicode",
+      "YoavBls.pretty-ts-errors",
+      "Zignd.html-css-class-completion",
+      "christian-kohler.npm-intellisense",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "mechatroner.rainbow-csv",
+      "mhutchie.git-graph",
+      "oderwat.indent-rainbow",
+      "pkief.material-icon-theme",
+      "redhat.vscode-yaml",
+      "streetsidesoftware.code-spell-checker",
+      "unifiedjs.vscode-mdx",
+      "usernamehw.errorlens",
+      "waderyan.gitblame",
+    ],
+  },
+}

@@ -1,0 +1,11 @@
+.github
+.esbuild
+build
+coverage
+dist
+node_modules
+!/**/*.ts
+!/**/*.tsx
+!/**/*.js
+!/**/*.jsx
+!/vite.config.ts
