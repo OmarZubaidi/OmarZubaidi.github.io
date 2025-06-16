@@ -1,2 +1,3 @@
-pnpm t
+exec git diff --name-only | pnpm cspell --no-summary --no-progress --no-must-find-files --file-list stdin
 pnpm lint-staged
+pnpm t
