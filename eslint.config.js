@@ -12,7 +12,7 @@ import tsEslint from 'typescript-eslint';
 export default defineConfig([
   {
     name: 'ignore/configs',
-    ignores: ['build', 'coverage', 'dist', 'node_modules', '**/node_modules'],
+    ignores: ['build', 'coverage', 'dist', 'node_modules', '**/node_modules', 'eslint.config.js', 'jest.config.ts'],
   },
   {
     name: 'recommended/css',
@@ -39,12 +39,16 @@ export default defineConfig([
     name: 'recommended/js',
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
       globals: {
         ...globals.browser,
         ...globals.node,
       },
     },
-    extends: ['js/recommended'],
+    extends: ['js/recommended', tsEslint.configs.strictTypeChecked, tsEslint.configs.stylisticTypeChecked],
     plugins: { js },
   },
   {
@@ -55,8 +59,6 @@ export default defineConfig([
       ...jsxA11yPlugin.flatConfigs.strict.languageOptions,
     },
   },
-  tsEslint.configs.strict,
-  tsEslint.configs.stylistic,
   {
     name: 'react/js',
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
