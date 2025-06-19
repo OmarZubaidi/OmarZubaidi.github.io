@@ -5,6 +5,6 @@ import Home from './Home';
 describe('Home Component', () => {
   it('displays correct text content', () => {
     render(<Home />);
-    expect(screen.getByText('Home')).toBeTruthy();
+    expect(screen.getByText('Home')).toBeDefined();
   });
 });

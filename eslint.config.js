@@ -5,6 +5,7 @@ import markdown from '@eslint/markdown';
 import vitestPlugin from '@vitest/eslint-plugin';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
+import testingLibraryPlugin from 'eslint-plugin-testing-library';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import tsEslint from 'typescript-eslint';
@@ -55,9 +56,6 @@ export default defineConfig([
     name: 'accessibility/js',
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     ...jsxA11yPlugin.flatConfigs.strict,
-    languageOptions: {
-      ...jsxA11yPlugin.flatConfigs.strict.languageOptions,
-    },
   },
   {
     name: 'react/js',
@@ -69,6 +67,7 @@ export default defineConfig([
   {
     name: 'tests/js',
     files: ['**/*.test.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    ...testingLibraryPlugin.configs['flat/react'],
     languageOptions: {
       globals: {
         ...vitestPlugin.environments.env.globals,
