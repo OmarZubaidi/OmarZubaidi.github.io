@@ -2,7 +2,7 @@ import css from '@eslint/css';
 import js from '@eslint/js';
 import json from '@eslint/json';
 import markdown from '@eslint/markdown';
-import jestPlugin from 'eslint-plugin-jest';
+import vitestPlugin from '@vitest/eslint-plugin';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
 import { defineConfig } from 'eslint/config';
@@ -12,7 +12,7 @@ import tsEslint from 'typescript-eslint';
 export default defineConfig([
   {
     name: 'ignore/configs',
-    ignores: ['build', 'coverage', 'dist', 'node_modules', '**/node_modules', 'eslint.config.js', 'jest.config.ts'],
+    ignores: ['build', 'coverage', 'dist', 'node_modules', 'eslint.config.js', 'vite.config.ts'],
   },
   {
     name: 'recommended/css',
@@ -67,10 +67,23 @@ export default defineConfig([
     },
   },
   {
-    name: 'tests/jest',
+    name: 'tests/js',
     files: ['**/*.test.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    languageOptions: { globals: globals.jest },
-    ...jestPlugin.configs['flat/recommended'],
-    ...jestPlugin.configs['flat/style'],
+    languageOptions: {
+      globals: {
+        ...vitestPlugin.environments.env.globals,
+      },
+    },
+    plugins: {
+      vitest: vitestPlugin,
+    },
+    rules: {
+      ...vitestPlugin.configs.recommended.rules,
+    },
+    settings: {
+      vitest: {
+        typecheck: true,
+      },
+    },
   },
 ]);
