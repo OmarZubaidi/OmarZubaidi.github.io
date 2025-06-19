@@ -2,8 +2,8 @@ import css from '@eslint/css';
 import js from '@eslint/js';
 import json from '@eslint/json';
 import markdown from '@eslint/markdown';
-import tsEslintPlugin from '@typescript-eslint/eslint-plugin';
 import jestPlugin from 'eslint-plugin-jest';
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
@@ -12,7 +12,7 @@ import tsEslint from 'typescript-eslint';
 export default defineConfig([
   {
     name: 'ignore/configs',
-    ignores: ['build', 'coverage', 'dist', 'node_modules', '**/eslint.config.js', '**/tsconfig*.json'],
+    ignores: ['build', 'coverage', 'dist', 'node_modules', '**/node_modules'],
   },
   {
     name: 'recommended/css',
@@ -23,15 +23,8 @@ export default defineConfig([
   },
   {
     name: 'recommended/json',
-    files: ['**/*.json'],
-    language: 'json/json',
-    extends: ['json/recommended'],
-    plugins: { json },
-  },
-  {
-    name: 'recommended/jsonc',
-    files: ['**/*.jsonc'],
-    language: 'json/jsonc',
+    files: ['**/*.{json,jsonc}'],
+    language: 'json/jsonc', // i like having comments in my json files
     extends: ['json/recommended'],
     plugins: { json },
   },
@@ -46,52 +39,29 @@ export default defineConfig([
     name: 'recommended/js',
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     languageOptions: {
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
     },
     extends: ['js/recommended'],
     plugins: { js },
   },
   {
-    name: 'recommended/ts',
-    files: ['**/*.{ts,mts,cts,tsx}'],
+    name: 'accessibility/js',
+    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    ...jsxA11yPlugin.flatConfigs.strict,
     languageOptions: {
-      globals: globals.browser,
-      parserOptions: {
-        project: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-    plugins: {
-      '@typescript-eslint': tsEslintPlugin,
-      ...tsEslint.configs.strictTypeChecked,
-      ...tsEslint.configs.stylisticTypeChecked,
-    },
-    rules: {
-      'no-unused-vars': 'off', // Handled by TypeScript
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          args: 'all',
-          argsIgnorePattern: '^_',
-          caughtErrors: 'all',
-          caughtErrorsIgnorePattern: '^_',
-          destructuredArrayIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          ignoreRestSiblings: true,
-        },
-      ],
+      ...jsxA11yPlugin.flatConfigs.strict.languageOptions,
     },
   },
+  tsEslint.configs.strict,
+  tsEslint.configs.stylistic,
   {
-    name: 'recommended/react',
-    files: ['**/*.{jsx,tsx}'],
-    settings: { react: { version: 'detect' } },
+    name: 'react/js',
+    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     plugins: {
-      ...reactPlugin.configs.flat.recommended,
-      ...reactPlugin.configs.flat.style,
-    },
-    rules: {
-      'react/react-in-jsx-scope': 'off',
+      'react-hooks': reactPlugin,
     },
   },
   {

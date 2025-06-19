@@ -13,6 +13,7 @@
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
+    // cSpell:disable-next-line jsxdev
     "jsx": "react-jsxdev",
 
     /* Linting */
