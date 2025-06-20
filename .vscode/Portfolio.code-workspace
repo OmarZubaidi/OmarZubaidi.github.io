@@ -6,10 +6,10 @@
     },
   ],
   "settings": {
-    "[json]": {
+    "[css][html][json][yaml][javascript][javascriptreact][typescript][typescriptreact]": {
       "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     },
-    "[javascript][typescript]": {
+    "[javascript][javascriptreact][typescript][typescriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[md][markdown]": {
@@ -20,9 +20,6 @@
       "editor.defaultFormatter": "unifiedjs.vscode-mdx",
       "editor.wordWrap": "on",
     },
-    "[yaml]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
     "editor.codeActionsOnSave": {
       "source.addMissingImports": "explicit",
       "source.addMissingImports.ts": "explicit",
@@ -32,6 +29,7 @@
       "source.organizeImports": "explicit",
       "source.sortImports": "explicit",
     },
+    "editor.formatOnSave": true,
     "editor.tabSize": 2,
     "files.exclude": {
       "node_modules": true,
