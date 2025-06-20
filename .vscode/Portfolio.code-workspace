@@ -2,23 +2,23 @@
   "folders": [
     {
       "name": "Portfolio",
-      "path": "..",
-    },
+      "path": ".."
+    }
   ],
   "settings": {
     "[css][html][json][yaml][javascript][javascriptreact][typescript][typescriptreact]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "[javascript][javascriptreact][typescript][typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[md][markdown]": {
       "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
-      "editor.wordWrap": "on",
+      "editor.wordWrap": "on"
     },
     "[mdx]": {
       "editor.defaultFormatter": "unifiedjs.vscode-mdx",
-      "editor.wordWrap": "on",
+      "editor.wordWrap": "on"
     },
     "editor.codeActionsOnSave": {
       "source.addMissingImports": "explicit",
@@ -27,14 +27,14 @@
       "source.fixAll.ts": "explicit",
       "source.fixAll.markdownlint": "explicit",
       "source.organizeImports": "explicit",
-      "source.sortImports": "explicit",
+      "source.sortImports": "explicit"
     },
     "editor.formatOnSave": true,
     "editor.tabSize": 2,
     "files.exclude": {
-      "node_modules": true,
+      "node_modules": true
     },
-    "files.trimTrailingWhitespace": true,
+    "files.trimTrailingWhitespace": true
   },
   "extensions": {
     "recommendations": [
@@ -55,7 +55,7 @@
       "streetsidesoftware.code-spell-checker",
       "unifiedjs.vscode-mdx",
       "usernamehw.errorlens",
-      "waderyan.gitblame",
-    ],
-  },
+      "waderyan.gitblame"
+    ]
+  }
 }

@@ -24,7 +24,7 @@ export default defineConfig([
   },
   {
     name: 'recommended/json',
-    files: ['**/*.{json,jsonc}'],
+    files: ['**/*.{json,jsonc}', '.vscode/*.code-workspace'],
     language: 'json/jsonc', // i like having comments in my json files
     extends: ['json/recommended'],
     plugins: { json },
