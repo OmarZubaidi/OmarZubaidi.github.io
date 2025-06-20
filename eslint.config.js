@@ -2,13 +2,13 @@ import css from '@eslint/css';
 import js from '@eslint/js';
 import json from '@eslint/json';
 import markdown from '@eslint/markdown';
-import vitestPlugin from '@vitest/eslint-plugin';
-import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
-import reactPlugin from 'eslint-plugin-react';
-import testingLibraryPlugin from 'eslint-plugin-testing-library';
+import vitest from '@vitest/eslint-plugin';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import react from 'eslint-plugin-react';
+import testingLibrary from 'eslint-plugin-testing-library';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
-import tsEslint from 'typescript-eslint';
+import typescriptEslint from 'typescript-eslint';
 
 export default defineConfig([
   {
@@ -16,28 +16,28 @@ export default defineConfig([
     ignores: ['build', 'coverage', 'dist', 'node_modules', 'eslint.config.js', 'vite.config.ts'],
   },
   {
-    name: 'recommended/css',
+    name: 'css/recommended',
     files: ['**/*.css'],
     language: 'css/css',
-    extends: ['css/recommended'],
     plugins: { css },
+    extends: ['css/recommended'],
   },
   {
-    name: 'recommended/json',
+    name: 'json/recommended',
     files: ['**/*.{json,jsonc}', '.vscode/*.code-workspace'],
     language: 'json/jsonc', // i like having comments in my json files
-    extends: ['json/recommended'],
     plugins: { json },
+    extends: ['json/recommended'],
   },
   {
-    name: 'recommended/markdown',
+    name: 'markdown/recommended',
     files: ['**/*.md'],
     language: 'markdown/gfm',
-    extends: ['markdown/recommended'],
     plugins: { markdown },
+    extends: ['markdown/recommended'],
   },
   {
-    name: 'recommended/js',
+    name: 'js/recommended',
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     languageOptions: {
       parserOptions: {
@@ -49,40 +49,38 @@ export default defineConfig([
         ...globals.node,
       },
     },
-    extends: ['js/recommended', tsEslint.configs.strictTypeChecked, tsEslint.configs.stylisticTypeChecked],
-    plugins: { js },
+    plugins: { js, 'typescript-eslint': typescriptEslint },
+    extends: ['js/recommended', 'typescript-eslint/strictTypeChecked', 'typescript-eslint/stylisticTypeChecked'],
   },
   {
-    name: 'accessibility/js',
+    name: 'js/accessibility',
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    ...jsxA11yPlugin.flatConfigs.strict,
+    extends: [jsxA11y.flatConfigs.strict],
   },
   {
-    name: 'react/js',
+    name: 'js/react',
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    plugins: {
-      'react-hooks': reactPlugin,
-    },
+    plugins: { 'react-hooks': react },
   },
   {
-    name: 'tests/js',
+    name: 'js/tests',
     files: ['**/*.test.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    ...testingLibraryPlugin.configs['flat/react'],
+    ...testingLibrary.configs['flat/react'],
     languageOptions: {
-      globals: {
-        ...vitestPlugin.environments.env.globals,
-      },
+      globals: vitest.environments.env.globals,
     },
     plugins: {
-      vitest: vitestPlugin,
-    },
-    rules: {
-      ...vitestPlugin.configs.recommended.rules,
+      testingLibrary,
+      vitest,
     },
     settings: {
       vitest: {
         typecheck: true,
       },
+    },
+    rules: {
+      ...vitest.configs.all.rules,
+      'vitest/no-done-callback': 'off', // disable deprecated rule
     },
   },
 ]);

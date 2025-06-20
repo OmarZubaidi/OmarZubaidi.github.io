@@ -11,9 +11,9 @@
   },
   "packageManager": "pnpm@10.9.0",
   "scripts": {
-    "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint --fix",
+    "dev": "vite",
+    "lint": "eslint --cache --fix",
     "preview": "vite preview",
     "test": "vitest",
     "test:no-watch": "vitest --watch=false"
