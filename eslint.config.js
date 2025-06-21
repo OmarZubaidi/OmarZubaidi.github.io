@@ -5,6 +5,7 @@ import markdown from '@eslint/markdown';
 import vitest from '@vitest/eslint-plugin';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
+import storybook from 'eslint-plugin-storybook';
 import testingLibrary from 'eslint-plugin-testing-library';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
@@ -13,7 +14,17 @@ import typescriptEslint from 'typescript-eslint';
 export default defineConfig([
   {
     name: 'ignore/configs',
-    ignores: ['build', 'coverage', 'dist', 'node_modules', 'eslint.config.js', 'vite.config.ts'],
+    ignores: [
+      'build',
+      'coverage',
+      'dist',
+      'node_modules',
+      // it annoys me that i have to ignore config files, but it fails if i don't
+      'eslint.config.js',
+      'vite.config.ts',
+      '.storybook',
+      'vitest.shims.d.ts',
+    ],
   },
   {
     name: 'css/recommended',
@@ -82,5 +93,11 @@ export default defineConfig([
       ...vitest.configs.all.rules,
       'vitest/no-done-callback': 'off', // disable deprecated rule
     },
+  },
+  {
+    name: 'js/storybook',
+    files: ['**/*.stories.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    plugins: { storybook },
+    extends: [storybook.configs['flat/recommended'], storybook.configs['flat/csf-strict']],
   },
 ]);

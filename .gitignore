@@ -9,6 +9,7 @@
 *.sln
 *.suo
 *.sw?
+*storybook.log
 coverage
 dist
 dist-ssr
@@ -18,5 +19,6 @@ node_modules
 pnpm-debug.log*
 pnpm-debug.log*
 pnpm-lock.yaml
+storybook-static
 yarn-debug.log*
 yarn-error.log*
