@@ -14,7 +14,7 @@
 /* 3. Enable keyword animations */
 @media (prefers-reduced-motion: no-preference) {
   html {
-  /* eslint-disable-next-line css/use-baseline */
+    /* eslint-disable-next-line css/use-baseline */
     interpolate-size: allow-keywords;
   }
 }
@@ -76,4 +76,8 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+}
+
+* {
+  font-family: 'Funnel Sans', sans-serif;
 }
