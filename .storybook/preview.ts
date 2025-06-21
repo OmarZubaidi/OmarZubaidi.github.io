@@ -15,6 +15,11 @@ const preview: Preview = {
     docs: {
       toc: true,
     },
+    options: {
+      storySort: {
+        method: 'alphabetical',
+      },
+    },
   },
   tags: ['autodocs'],
 };
