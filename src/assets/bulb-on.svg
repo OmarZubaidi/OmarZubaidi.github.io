@@ -1,4 +1,4 @@
-<svg fill="none" stroke-width="3" stroke-linejoin="round" viewBox="0 0 56.3 64" xmlns="http://www.w3.org/2000/svg">
+<svg title="bulb-on" fill="none" stroke-width="3" stroke-linejoin="round" viewBox="0 0 56.3 64" xmlns="http://www.w3.org/2000/svg">
   <g id="Filament" stroke="#ff0090">
     <path id="Stem" stroke-linecap="butt" d="M 28.1,21.65 V 31.1" />
     <path id="Coil" stroke-linecap="round" d="m 22.7,37.8 5.4,-6.7 5.4,6.7" />
