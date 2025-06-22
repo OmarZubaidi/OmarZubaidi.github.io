@@ -103,6 +103,9 @@ body[data-theme='light'] {
   --color-secondary: var(--_color-secondary-light);
   --color-text: var(--_color-text);
   --color-background: var(--_color-background);
+
+  color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 body[data-theme='dark'] {
@@ -110,4 +113,7 @@ body[data-theme='dark'] {
   --color-secondary: var(--_color-secondary-dark);
   --color-text: var(--_color-background);
   --color-background: var(--_color-text);
+
+  color: var(--color-text);
+  background-color: var(--color-background);
 }
