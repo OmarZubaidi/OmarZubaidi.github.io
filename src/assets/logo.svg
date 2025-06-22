@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" stroke="currentColor" fill="none">
+  <ellipse id="O" stroke-width="4" ry="26" rx="26" cy="32" cx="32"/>
+  <g id="Z">
+    <line stroke-width="4" x1="0" x2="64" y1="2" y2="2"/>
+    <line stroke-width="4" x1="64" x2="0" y1="1" y2="63"/>
+    <line stroke-width="4" x1="0" x2="64" y1="62" y2="62"/>
+  </g>
+</svg>
