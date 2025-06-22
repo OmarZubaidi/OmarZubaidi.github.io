@@ -81,3 +81,33 @@ h6 {
 * {
   font-family: 'Funnel Sans', sans-serif;
 }
+
+/* Global variables */
+html {
+  --_color-primary: #ff0091;
+  --_color-secondary-light: #990057;
+  --_color-secondary-dark: #ff8acc;
+  --_color-text: #212121;
+  --_color-background: #ffffff;
+
+  --color-gray: #bfbfbf;
+
+  --border-radius-sm: 0.5rem;
+  --border-radius-lg: 2rem;
+  --padding: 1rem;
+  --margin: 1rem;
+}
+
+body[data-theme='light'] {
+  --color-primary: var(--_color-primary);
+  --color-secondary: var(--_color-secondary-light);
+  --color-text: var(--_color-text);
+  --color-background: var(--_color-background);
+}
+
+body[data-theme='dark'] {
+  --color-primary: var(--_color-primary);
+  --color-secondary: var(--_color-secondary-dark);
+  --color-text: var(--_color-background);
+  --color-background: var(--_color-text);
+}
