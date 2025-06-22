@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "name": "omar",
+  "description": "Omar's preferred spell checker configuration",
+  "language": "en,en-US",
+  "useGitignore": true,
+  "enabledFileTypes": {
+    "*": true
+  },
+  "dictionaries": ["en_US", "softwareTerms", "bash", "css", "filetypes", "html", "node", "npm", "typescript"],
+  "ignorePaths": ["**/package.json"],
+  "flagWords": ["hte"],
+  "words": ["autodocs", "datetime", "datetimes", "luxon", "millis", "unshift", "zubaidi"]
+}
