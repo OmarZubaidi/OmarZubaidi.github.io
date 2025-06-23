@@ -9,7 +9,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const ClickableToggle: Story = {
   play: async ({ canvas }) => {
     const button = canvas.getByRole('button');
 
@@ -23,5 +23,22 @@ export const Default: Story = {
 
     // back to light mode to end test
     await userEvent.click(button);
+  },
+};
+
+export const AccessibleToggle: Story = {
+  play: async ({ canvas }) => {
+    const button = canvas.getByRole('button');
+
+    await expect(document.body.dataset.theme).toBe('light');
+    await expect(canvas.getByTitle('bulb-on')).toBeInTheDocument();
+
+    await userEvent.type(button, '{tab}{enter}');
+
+    await expect(document.body.dataset.theme).toBe('dark');
+    await expect(canvas.getByTitle('bulb-off')).toBeInTheDocument();
+
+    // back to light mode to end test
+    await userEvent.type(button, '{tab}{enter}');
   },
 };
