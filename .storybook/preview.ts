@@ -13,6 +13,9 @@ const preview: Preview = {
       test: 'error',
     },
     docs: {
+      controls: {
+        sort: 'requiredFirst',
+      },
       toc: true,
     },
     options: {
