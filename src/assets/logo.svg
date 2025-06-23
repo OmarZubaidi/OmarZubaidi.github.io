@@ -1,0 +1,16 @@
+<svg
+  title="logo"
+  stroke="currentColor"
+  fill="none"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  viewBox="0 0 64 64"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <circle id="O" cx="32" cy="32" r="26" />
+  <path
+    id="Z"
+    d="m 2,2 h 57 a 2.9593926,2.9593926 69.699353 0 1 1.925947,5.206331 L 3.0740528,56.793669 A 2.9593926,2.9593926 69.699353 0 0 5,62 h 57"
+  />
+</svg>
