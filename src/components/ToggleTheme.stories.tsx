@@ -9,36 +9,34 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const ClickableToggle: Story = {
-  play: async ({ canvas }) => {
+export const Toggle: Story = {
+  play: async ({ canvas, step }) => {
     const button = canvas.getByRole('button');
+    const user = userEvent.setup({ skipClick: true });
 
     await expect(document.body.dataset.theme).toBe('light');
     await expect(canvas.getByTitle('bulb-on')).toBeInTheDocument();
 
-    await userEvent.click(button);
+    await step('check if the button is clickable', async () => {
+      await user.click(button);
+      await expect(document.body.dataset.theme).toBe('dark');
+      await expect(canvas.getByTitle('bulb-off')).toBeInTheDocument();
 
-    await expect(document.body.dataset.theme).toBe('dark');
-    await expect(canvas.getByTitle('bulb-off')).toBeInTheDocument();
+      await user.click(button);
+      await expect(document.body.dataset.theme).toBe('light');
+      await expect(canvas.getByTitle('bulb-on')).toBeInTheDocument();
+    });
 
-    // back to light mode to end test
-    await userEvent.click(button);
-  },
-};
+    await step('check if the button is accessible', async () => {
+      await expect(button).toHaveAccessibleName('Dark mode toggle');
 
-export const AccessibleToggle: Story = {
-  play: async ({ canvas }) => {
-    const button = canvas.getByRole('button');
-
-    await expect(document.body.dataset.theme).toBe('light');
-    await expect(canvas.getByTitle('bulb-on')).toBeInTheDocument();
-
-    await userEvent.type(button, '{tab}{enter}');
-
-    await expect(document.body.dataset.theme).toBe('dark');
-    await expect(canvas.getByTitle('bulb-off')).toBeInTheDocument();
-
-    // back to light mode to end test
-    await userEvent.type(button, '{tab}{enter}');
+      await expect(document.body.dataset.theme).toBe('light');
+      await user.type(button, 'c');
+      await expect(document.body.dataset.theme).toBe('light');
+      await user.keyboard('{Enter}');
+      await expect(document.body.dataset.theme).toBe('dark');
+      await user.keyboard(' ');
+      await expect(document.body.dataset.theme).toBe('light');
+    });
   },
 };

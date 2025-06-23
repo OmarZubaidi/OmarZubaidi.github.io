@@ -21,20 +21,8 @@ export default function ToggleTheme() {
 
   return (
     <button
-      onClick={() => {
-        toggleTheme();
-      }}
-      onKeyDown={(e) => {
-        if (e.key !== 'Enter' && e.key !== ' ') {
-          return;
-        }
-        e.preventDefault();
-        toggleTheme();
-      }}
-      onKeyUp={() => null}
       aria-label="Dark mode toggle"
-      name="dark-mode-toggle"
-      tabIndex={0}
+      onClick={toggleTheme}
       type="button"
       style={{
         background: 'transparent',
