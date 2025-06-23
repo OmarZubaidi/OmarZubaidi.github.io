@@ -1,5 +1,3 @@
-import './Home.css';
-
 export interface HomeProps {
   /** CSS class */
   className?: string;
