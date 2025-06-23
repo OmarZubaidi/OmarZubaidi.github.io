@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import BulbOff from '../assets/bulb-off.svg?react';
-import BulbOn from '../assets/bulb-on.svg?react';
+import BulbOff from '../assets/bulbOff.svg?react';
+import BulbOn from '../assets/bulbOn.svg?react';
 
 /**
  * ToggleTheme component
