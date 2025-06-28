@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc -b && vite build",
     "dev": "vite",
-    "lint": "eslint --cache --fix",
+    "lint": "eslint --cache --max-warnings 0 --fix",
     "preview": "vite preview",
     "storybook": "STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
     "test": "vitest",
@@ -53,8 +53,8 @@
     "eslint-plugin-storybook": "^9.0.12",
     "eslint-plugin-testing-library": "7.5.3",
     "globals": "^16.0.0",
+    "happy-dom": "18.0.1",
     "husky": "9.1.7",
-    "jsdom": "26.1.0",
     "lint-staged": "16.1.2",
     "markdown-to-jsx": "7.7.8",
     "playwright": "^1.53.1",
