@@ -83,6 +83,8 @@ h6 {
   font-family: 'Funnel Sans', sans-serif;
 }
 
+/* -------------------------------------------------------------------------- */
+
 /* Global variables */
 html {
   --_color-primary: #ff0091;
@@ -99,24 +101,40 @@ html {
   --margin: 1rem;
 
   font-size: 16px;
+
+  @media (prefers-color-scheme: light) {
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
 }
 
-body[data-theme='light'] {
+/* https://caniuse.com/css-has 92.8% adoption rate as of 2025-06-28 */
+/* eslint-disable-next-line css/use-baseline */
+html:has(body[data-theme='light']) {
   --color-primary: var(--_color-primary);
   --color-secondary: var(--_color-secondary-light);
   --color-text: var(--_color-text);
   --color-background: var(--_color-background);
+  color-scheme: light;
 
+  /* eslint-disable css/no-invalid-properties */
   color: var(--color-text);
   background-color: var(--color-background);
+  /* eslint-enable css/no-invalid-properties */
 }
 
-body[data-theme='dark'] {
+/* eslint-disable-next-line css/use-baseline */
+html:has(body[data-theme='dark']) {
   --color-primary: var(--_color-primary);
   --color-secondary: var(--_color-secondary-dark);
   --color-text: var(--_color-background);
   --color-background: var(--_color-text);
+  color-scheme: dark;
 
+  /* eslint-disable css/no-invalid-properties */
   color: var(--color-text);
   background-color: var(--color-background);
+  /* eslint-enable css/no-invalid-properties */
 }

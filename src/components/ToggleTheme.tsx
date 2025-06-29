@@ -9,7 +9,10 @@ import BulbOn from '../assets/bulbOn.svg?react';
  * current theme.
  */
 export default function ToggleTheme() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>(
+    // default to light mode
+    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+  );
 
   useEffect(() => {
     document.body.dataset.theme = theme;
