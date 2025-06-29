@@ -54,8 +54,8 @@ export const LogoIcon: Story = {
     },
   },
   play: async ({ args, canvas, step }) => {
-    const button = canvas.getByRole('button');
     const user = userEvent.setup({ skipClick: true });
+    const button = canvas.getByRole('button');
 
     await step('check if the button is rendered correctly', async () => {
       await expect(button).toBeInTheDocument();

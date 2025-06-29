@@ -36,8 +36,8 @@ function getExpectedBulb({ canvas, toBeFlipped, startsAsLightMode }: GetExpected
 
 export const Toggle: Story = {
   play: async ({ canvas, step }) => {
-    const button = canvas.getByRole('button');
     const user = userEvent.setup({ skipClick: true });
+    const button = canvas.getByRole('button');
 
     const startsAsLightMode = document.body.dataset.theme === 'light';
     await expect(
