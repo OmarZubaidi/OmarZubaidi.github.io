@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 import '../src/index.css';
+import { withRouter } from './decorators/withRouter';
 
 const preview: Preview = {
   parameters: {
@@ -13,6 +14,9 @@ const preview: Preview = {
       test: 'error',
     },
     docs: {
+      controls: {
+        sort: 'requiredFirst',
+      },
       toc: true,
     },
     options: {
@@ -21,6 +25,7 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [withRouter],
   tags: ['autodocs'],
 };
 

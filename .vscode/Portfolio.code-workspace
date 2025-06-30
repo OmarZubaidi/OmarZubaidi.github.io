@@ -7,9 +7,6 @@
   ],
   "settings": {
     "[css][html][json][yaml][javascript][javascriptreact][typescript][typescriptreact]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "[javascript][javascriptreact][typescript][typescriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[md][markdown]": {

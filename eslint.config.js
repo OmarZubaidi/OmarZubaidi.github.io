@@ -27,6 +27,12 @@ export default defineConfig([
     ],
   },
   {
+    name: 'eslint/options',
+    linterOptions: {
+      reportUnusedDisableDirectives: 'error',
+    },
+  },
+  {
     name: 'css/recommended',
     files: ['**/*.css'],
     language: 'css/css',

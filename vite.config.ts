@@ -11,7 +11,7 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 export default defineConfig({
   plugins: [react(), svgr(), viteTsconfigPaths()],
   test: {
-    environment: 'jsdom',
+    environment: 'happy-dom',
     globals: true,
     coverage: {
       enabled: true,
