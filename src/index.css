@@ -101,13 +101,6 @@ html {
   --margin: 1rem;
 
   font-size: 16px;
-
-  @media (prefers-color-scheme: light) {
-    color-scheme: light;
-  }
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
 }
 
 /* https://caniuse.com/css-has 92.8% adoption rate as of 2025-06-28 */

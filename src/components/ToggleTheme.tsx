@@ -25,6 +25,7 @@ export default function ToggleTheme() {
   return (
     <button
       aria-label="Dark mode toggle"
+      aria-pressed={theme === 'dark'}
       onClick={toggleTheme}
       type="button"
       style={{
