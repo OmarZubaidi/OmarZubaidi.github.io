@@ -15,7 +15,7 @@
     "dev": "vite",
     "lint": "eslint --cache --max-warnings 0 --fix",
     "preview": "vite preview",
-    "storybook": "STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
+    "sb": "STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
     "test": "vitest",
     "test:no-watch": "vitest --watch=false"
   },
