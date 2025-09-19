@@ -1,11 +1,11 @@
 import type { Decorator } from '@storybook/react-vite';
+import * as reactRouterModule from 'react-router';
 import { BrowserRouter } from 'react-router';
 
 export const withRouter: Decorator = (Story, context) => {
   const mockReactRouter = context.parameters?.mockReactRouter;
   if (mockReactRouter) {
-    const originalModule = require('react-router');
-    Object.assign(originalModule, mockReactRouter);
+    Object.assign(reactRouterModule, mockReactRouter);
   }
 
   return (
