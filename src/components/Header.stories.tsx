@@ -22,12 +22,12 @@ export const Default: Story = {
       await expect(heading).toHaveTextContent('Omar');
     });
 
-    await step('check if the logo is clickable', async () => {
+    await step('check the logo is clickable', async () => {
       await user.click(logo);
       // todo assert it tries navigating to the home page
     });
 
-    await step('check if the logo is accessible', async () => {
+    await step('check the logo is accessible', async () => {
       await user.keyboard('{Enter}');
       // todo assert it tries navigating to the home page
     });

@@ -26,7 +26,7 @@ export const Toggle: Story = {
     const button = canvas.getByRole('button');
     const startsAsLightMode = document.body.dataset.theme === 'light';
 
-    await step('check the button is rendered properly', async () => {
+    await step('check the button renders properly', async () => {
       await expect(button).toBeInTheDocument();
       await expect(button).toHaveAccessibleName('Dark mode toggle');
       await assertThemeAndBulbState({
@@ -36,7 +36,7 @@ export const Toggle: Story = {
       });
     });
 
-    await step('check if the button is clickable', async () => {
+    await step('check the button is clickable', async () => {
       // changes
       await user.click(button);
       await assertThemeAndBulbState({
@@ -54,7 +54,7 @@ export const Toggle: Story = {
       });
     });
 
-    await step('check if the button is accessible', async () => {
+    await step('check the button is accessible', async () => {
       // doesn't trigger button
       await user.type(button, 'c');
       await assertThemeAndBulbState({

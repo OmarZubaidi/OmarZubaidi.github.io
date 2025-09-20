@@ -57,7 +57,7 @@ export const LogoIcon: Story = {
     const user = userEvent.setup({ skipClick: true });
     const button = canvas.getByRole('button');
 
-    await step('check if the button is rendered correctly', async () => {
+    await step('check the button is renders correctly', async () => {
       await expect(button).toBeInTheDocument();
       await expect(button).toHaveAccessibleName('Go to home page');
       await expect(button).toHaveStyle('height: 64px');
@@ -67,12 +67,12 @@ export const LogoIcon: Story = {
       await expect(button).toHaveStyle('cursor: pointer');
     });
 
-    await step('check if the button is clickable', async () => {
+    await step('check the button can be clicked', async () => {
       await user.click(button);
       await expect(args.onClick).toHaveBeenCalledTimes(1);
     });
 
-    await step('check if the button is accessible', async () => {
+    await step('check the button is accessible', async () => {
       await user.type(button, '{enter}');
       await expect(args.onClick).toHaveBeenCalledTimes(2);
     });
