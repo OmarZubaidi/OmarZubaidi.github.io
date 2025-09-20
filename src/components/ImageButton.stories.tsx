@@ -76,7 +76,6 @@ export const Default: Story = {
 // -----------------------------------------------------------------------------
 
 const onClickMock = fn();
-
 export const OnClickButton: Story = {
   args: {
     onClick: onClickMock,
