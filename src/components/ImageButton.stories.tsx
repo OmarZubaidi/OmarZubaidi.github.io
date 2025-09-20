@@ -14,13 +14,8 @@ import ImageButton from './ImageButton';
 const meta = {
   component: ImageButton,
   args: {
-    onClick: fn(),
     image: <Logo />,
-    label: 'Go to home page',
-    padding: 8,
-  },
-  beforeEach: () => {
-    meta.args.onClick.mockClear();
+    label: 'Image label',
   },
   argTypes: {
     image: {
@@ -62,16 +57,36 @@ type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
+  play: async ({ canvas, step }) => {
+    const button = canvas.getByRole('button');
+
+    await step('check the button renders correctly', async () => {
+      await expect(button).toBeInTheDocument();
+      await expect(button).toHaveAccessibleName('Image label');
+      await expect(button).toHaveStyle(`height: 68px`);
+      // update this test if you update the default font size
+      await expect(button).toHaveStyle('padding: 16px');
+      await expect(button).toHaveStyle('cursor: pointer');
+    });
+  },
+};
+
+// -----------------------------------------------------------------------------
+// story variants. test arguments and their effects or state changes
+// -----------------------------------------------------------------------------
+
+const onClickMock = fn();
+
+export const OnClickButton: Story = {
+  args: {
+    onClick: onClickMock,
+  },
+  afterEach: () => {
+    onClickMock.mockClear();
+  },
   play: async ({ args, canvas, step }) => {
     const user = userEvent.setup({ skipClick: true });
     const button = canvas.getByRole('button');
-
-    await step('check the button is renders correctly', async () => {
-      await expect(button).toBeInTheDocument();
-      await expect(button).toHaveAccessibleName('Go to home page');
-      await expect(button).toHaveStyle('padding: 8px');
-      await expect(button).toHaveStyle('cursor: pointer');
-    });
 
     await step('check the button can be clicked', async () => {
       await user.click(button);
@@ -86,13 +101,20 @@ export const Default: Story = {
   },
 };
 
-// -----------------------------------------------------------------------------
-// story variants. test arguments and their effects or state changes
-// -----------------------------------------------------------------------------
+export const LinkButton: Story = {
+  args: {
+    onClick: undefined,
+    link: 'https://example.com',
+  },
+  play: async ({ args, canvas }) => {
+    await expect(canvas.getByRole('link')).toHaveAttribute('href', args.link);
+  },
+};
 
 export const Primary: Story = {
   args: {
     height: 24,
+    padding: 8,
     buttonStyle: {
       backgroundColor: 'fuchsia',
       border: '2px solid fuchsia',
@@ -103,6 +125,7 @@ export const Primary: Story = {
   play: async ({ canvas }) => {
     const button = canvas.getByRole('button');
     await expect(button).toHaveStyle(`height: 44px`);
+    await expect(button).toHaveStyle('padding: 8px');
     await expect(button).toHaveStyle('background-color: rgb(255, 0, 255)');
     await expect(button).toHaveStyle('border: 2px solid rgb(255, 0, 255)');
     await expect(button).toHaveStyle('border-radius: 12px');
@@ -122,7 +145,7 @@ export const Secondary: Story = {
   },
   play: async ({ canvas }) => {
     const button = canvas.getByRole('button');
-    await expect(button).toHaveStyle(`height: 44px`);
+    await expect(button).toHaveStyle(`height: 60px`);
     await expect(button).toHaveStyle('background-color: rgba(0, 0, 0, 0)');
     await expect(button).toHaveStyle('border: 2px solid rgb(255, 0, 255)');
     await expect(button).toHaveStyle('border-radius: 12px');
@@ -133,6 +156,7 @@ export const Secondary: Story = {
 export const LogoIcon: Story = {
   name: 'Logo',
   args: {
+    label: 'Go to home page',
     height: 48,
     buttonStyle: {
       backgroundColor: 'transparent',
@@ -142,7 +166,8 @@ export const LogoIcon: Story = {
   },
   play: async ({ canvas }) => {
     const button = canvas.getByRole('button');
-    await expect(button).toHaveStyle('height: 64px');
+    await expect(button).toHaveAccessibleName('Go to home page');
+    await expect(button).toHaveStyle('height: 80px');
     await expect(button).toHaveStyle('background-color: rgba(0, 0, 0, 0)');
     await expect(button).toHaveStyle('border-style: none');
     await expect(button).toHaveStyle('color: #212121');
