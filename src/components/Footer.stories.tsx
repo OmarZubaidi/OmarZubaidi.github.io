@@ -3,12 +3,16 @@ import { expect, fn, isInaccessible, userEvent } from 'storybook/test';
 import Footer from './Footer';
 
 const windowOpenSpy = fn();
+const windowOpen = window.open;
 
 const meta = {
   component: Footer,
   beforeEach: () => {
     windowOpenSpy.mockClear();
     window.open = windowOpenSpy;
+  },
+  afterEach: () => {
+    window.open = windowOpen;
   },
 } satisfies Meta<typeof Footer>;
 export default meta;
