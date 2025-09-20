@@ -70,4 +70,7 @@ export default function ImageButton({
       </Link>
     );
   }
+
+  // keep ts happy without a non-null assertion
+  throw new Error('ImageButton must have at least one of onClick or link defined');
 }

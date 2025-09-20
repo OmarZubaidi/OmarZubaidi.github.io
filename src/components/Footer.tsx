@@ -28,7 +28,6 @@ export default function Footer() {
       }}
     >
       <Logo
-        aria-label=""
         aria-hidden="true"
         style={{
           backgroundColor: 'transparent',
