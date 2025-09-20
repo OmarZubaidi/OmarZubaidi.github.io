@@ -28,6 +28,7 @@ export const Default: Story = {
     });
 
     await step('check the logo is accessible', async () => {
+      logo.focus();
       await user.keyboard('{Enter}');
       // todo assert it tries navigating to the home page
     });
