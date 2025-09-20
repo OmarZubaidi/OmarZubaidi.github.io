@@ -98,6 +98,7 @@ export default defineConfig([
     rules: {
       ...vitest.configs.all.rules,
       'vitest/no-done-callback': 'off', // disable deprecated rule
+      'vitest/no-hooks': 'off', // before/after hooks are far too useful to disable
     },
   },
   {
