@@ -6,7 +6,6 @@ import ToggleTheme from './ToggleTheme';
 const meta = {
   component: ToggleTheme,
 } satisfies Meta<typeof ToggleTheme>;
-
 export default meta;
 type Story = StoryObj<typeof meta>;
 

@@ -4,7 +4,6 @@ import Home from './Home';
 const meta = {
   component: Home,
 } satisfies Meta<typeof Home>;
-
 export default meta;
 type Story = StoryObj<typeof meta>;
 

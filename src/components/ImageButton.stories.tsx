@@ -39,7 +39,6 @@ const meta = {
     },
   },
 } satisfies Meta<typeof ImageButton>;
-
 export default meta;
 type Story = StoryObj<typeof meta>;
 
