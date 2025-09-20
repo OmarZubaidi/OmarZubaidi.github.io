@@ -63,14 +63,10 @@ export default function ImageButton({
     );
   }
 
-  if (link) {
-    return (
-      <Link to={link} aria-label={label} style={{ color: 'inherit', textDecoration: 'none' }}>
-        {imageJsx}
-      </Link>
-    );
-  }
-
-  // keep ts happy without a non-null assertion
-  throw new Error('ImageButton must have at least one of onClick or link defined');
+  return (
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    <Link to={link!} aria-label={label} style={{ color: 'inherit', textDecoration: 'none' }}>
+      {imageJsx}
+    </Link>
+  );
 }

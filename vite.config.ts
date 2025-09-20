@@ -19,7 +19,7 @@ export default defineConfig({
       reportOnFailure: true,
       exclude: [...configDefaults.exclude, '**/index.tsx', '**/eslint.config.js', '**/.storybook/**', '**/coverage/**'],
       thresholds: {
-        '100': true,
+        100: true,
       },
     },
     projects: [
