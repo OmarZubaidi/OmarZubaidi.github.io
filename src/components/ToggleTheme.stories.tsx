@@ -28,6 +28,7 @@ export const Toggle: Story = {
     await step('check the button renders properly', async () => {
       await expect(button).toBeInTheDocument();
       await expect(button).toHaveAccessibleName('Dark mode toggle');
+      await expect(button.hasAttribute('aria-live')).toBe(true);
       await assertThemeAndBulbState({
         theme: document.body.dataset.theme,
         canvas,

@@ -25,6 +25,8 @@ export default function ToggleTheme() {
   return (
     <button
       aria-label="Dark mode toggle"
+      // completely blind users can't see theme colors, but light sensitive users may prefer dark mode
+      aria-live="polite"
       aria-pressed={theme === 'dark'}
       onClick={toggleTheme}
       type="button"

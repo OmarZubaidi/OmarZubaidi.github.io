@@ -11,6 +11,9 @@ const meta = {
     label: 'Go to home page',
     padding: 8,
   },
+  beforeEach: () => {
+    meta.args.onClick.mockClear();
+  },
   argTypes: {
     image: {
       table: {
@@ -72,7 +75,8 @@ export const LogoIcon: Story = {
     });
 
     await step('check the button is accessible', async () => {
-      await user.type(button, '{enter}');
+      button.focus();
+      await user.keyboard('{Enter}');
       await expect(args.onClick).toHaveBeenCalledTimes(2);
     });
   },
