@@ -16,10 +16,10 @@ const windowOpen = window.open;
 const meta = {
   component: Footer,
   beforeEach: () => {
-    windowOpenSpy.mockClear();
     window.open = windowOpenSpy;
   },
   afterEach: () => {
+    windowOpenSpy.mockClear();
     window.open = windowOpen;
   },
 } satisfies Meta<typeof Footer>;
