@@ -8,10 +8,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   const handleOnClick = () => {
-    const navigated = navigate('/');
-    if (navigated instanceof Promise) {
-      navigated.catch(console.error);
-    }
+    void navigate('/');
   };
 
   return (
