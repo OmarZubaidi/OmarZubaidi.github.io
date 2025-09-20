@@ -1,16 +1,9 @@
-import { useNavigate } from 'react-router';
 import Logo from '../assets/logo.svg?react';
 import ImageButton from './ImageButton';
 import ToggleTheme from './ToggleTheme';
 
 /** Header component to be used on all pages */
 export default function Header() {
-  const navigate = useNavigate();
-
-  const handleOnClick = () => {
-    void navigate('/');
-  };
-
   return (
     <header
       style={{
@@ -27,7 +20,7 @@ export default function Header() {
           image={<Logo />}
           height={48}
           label="Return to home page"
-          onClick={handleOnClick}
+          link="/"
           buttonStyle={{
             backgroundColor: 'transparent',
             border: 'none',
