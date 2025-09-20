@@ -13,8 +13,8 @@ createRoot(rootElement).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
+        {/* todo update paths */}
         <Route path="/" element={<Home />} />
-        <Route path="/page" element={<h1>Page</h1>} />
         <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>

@@ -11,5 +11,5 @@
   "dictionaries": ["en_US", "softwareTerms", "bash", "css", "filetypes", "html", "node", "npm", "typescript"],
   "ignorePaths": ["**/package.json", ".vscode"],
   "flagWords": ["hte"],
-  "words": ["autodocs", "datetime", "datetimes", "luxon", "millis", "unshift", "zubaidi"]
+  "words": ["autodocs", "datetime", "datetimes", "luxon", "millis", "octocat", "unshift", "zubaidi"]
 }

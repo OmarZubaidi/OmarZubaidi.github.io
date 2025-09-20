@@ -6,8 +6,9 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
-const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
+import { configDefaults } from 'vitest/config';
 
+const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   plugins: [react(), svgr(), viteTsconfigPaths()],
   test: {
@@ -16,6 +17,10 @@ export default defineConfig({
     coverage: {
       enabled: true,
       reportOnFailure: true,
+      exclude: [...configDefaults.exclude, '**/index.tsx', '**/eslint.config.js', '**/.storybook/**', '**/coverage/**'],
+      thresholds: {
+        100: true,
+      },
     },
     projects: [
       {

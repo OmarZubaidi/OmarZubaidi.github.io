@@ -13,8 +13,6 @@ How did you do what you described? If you want to go into detail, do it here
 Did you add/update tests? Do they pass (they should because of pre-commit hooks)? If not, why?
 
 - [ ] created story and component tests for new components/pages
-  - [ ] ensured accessibility checks pass in storybook, firefox, and chrome
-  - [ ] maximized coverage without testing implementation details
 - [ ] created unit tests for functions
 
 ## Notes
