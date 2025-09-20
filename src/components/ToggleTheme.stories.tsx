@@ -3,7 +3,15 @@ import type { Canvas } from 'storybook/internal/csf';
 import { expect, fn, userEvent } from 'storybook/test';
 import ToggleTheme from './ToggleTheme';
 
+// -----------------------------------------------------------------------------
+// functions that override default behavior
+// -----------------------------------------------------------------------------
+
 const windowMatchMedia = window.matchMedia;
+
+// -----------------------------------------------------------------------------
+// core story definition, including before and after hooks and argTypes
+// -----------------------------------------------------------------------------
 
 const meta = {
   component: ToggleTheme,
@@ -14,6 +22,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// -----------------------------------------------------------------------------
+// constants and helper functions
+// -----------------------------------------------------------------------------
+
 async function assertLightMode(canvas: Canvas) {
   await expect(document.body.dataset.theme).toBe('light');
   await expect(canvas.getByTitle('bulb-on')).toBeInTheDocument();
@@ -23,6 +35,10 @@ async function assertDarkMode(canvas: Canvas) {
   await expect(document.body.dataset.theme).toBe('dark');
   await expect(canvas.getByTitle('bulb-off')).toBeInTheDocument();
 }
+
+// -----------------------------------------------------------------------------
+// default story. test core functionality, accessibility, and function calls
+// -----------------------------------------------------------------------------
 
 export const Default: Story = {
   play: async ({ canvas, step }) => {
@@ -59,6 +75,10 @@ export const Default: Story = {
     });
   },
 };
+
+// -----------------------------------------------------------------------------
+// story variants. test arguments and their effects or state changes
+// -----------------------------------------------------------------------------
 
 export const LightMode: Story = {
   play: async ({ canvas, step }) => {

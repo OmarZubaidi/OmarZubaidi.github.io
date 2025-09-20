@@ -2,8 +2,16 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, isInaccessible, userEvent } from 'storybook/test';
 import Footer from './Footer';
 
+// -----------------------------------------------------------------------------
+// functions that override default behavior
+// -----------------------------------------------------------------------------
+
 const windowOpenSpy = fn();
 const windowOpen = window.open;
+
+// -----------------------------------------------------------------------------
+// core story definition, including before and after hooks and argTypes
+// -----------------------------------------------------------------------------
 
 const meta = {
   component: Footer,
@@ -17,6 +25,14 @@ const meta = {
 } satisfies Meta<typeof Footer>;
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+// -----------------------------------------------------------------------------
+// constants and helper functions
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// default story. test core functionality, accessibility, and function calls
+// -----------------------------------------------------------------------------
 
 export const Default: Story = {
   play: async ({ canvas, step }) => {
@@ -83,3 +99,7 @@ export const Default: Story = {
     });
   },
 };
+
+// -----------------------------------------------------------------------------
+// story variants. test arguments and their effects or state changes
+// -----------------------------------------------------------------------------

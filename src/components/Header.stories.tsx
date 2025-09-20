@@ -2,11 +2,27 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent } from 'storybook/test';
 import Header from './Header';
 
+// -----------------------------------------------------------------------------
+// functions that override default behavior
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// core story definition, including before and after hooks and argTypes
+// -----------------------------------------------------------------------------
+
 const meta = {
   component: Header,
 } satisfies Meta<typeof Header>;
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+// -----------------------------------------------------------------------------
+// constants and helper functions
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// default story. test core functionality, accessibility, and function calls
+// -----------------------------------------------------------------------------
 
 export const Default: Story = {
   play: async ({ canvas, step }) => {
@@ -37,3 +53,7 @@ export const Default: Story = {
     });
   },
 };
+
+// -----------------------------------------------------------------------------
+// story variants. test arguments and their effects or state changes
+// -----------------------------------------------------------------------------

@@ -3,6 +3,14 @@ import { expect, fn, userEvent } from 'storybook/test';
 import Logo from '../assets/logo.svg?react';
 import ImageButton from './ImageButton';
 
+// -----------------------------------------------------------------------------
+// functions that override default behavior
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// core story definition, including before and after hooks and argTypes
+// -----------------------------------------------------------------------------
+
 const meta = {
   component: ImageButton,
   args: {
@@ -45,6 +53,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// -----------------------------------------------------------------------------
+// constants and helper functions
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// default story. test core functionality, accessibility, and function calls
+// -----------------------------------------------------------------------------
+
 export const Default: Story = {
   play: async ({ args, canvas, step }) => {
     const user = userEvent.setup({ skipClick: true });
@@ -69,6 +85,10 @@ export const Default: Story = {
     });
   },
 };
+
+// -----------------------------------------------------------------------------
+// story variants. test arguments and their effects or state changes
+// -----------------------------------------------------------------------------
 
 export const Primary: Story = {
   args: {
