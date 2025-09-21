@@ -1,20 +1,14 @@
 import Email from '../assets/email.svg?react';
 import GitHub from '../assets/github.svg?react';
-import LinkedIn from '../assets/linkedIn.svg?react';
+import LinkedInBlack from '../assets/linkedInBlack.svg?react';
+import LinkedInWhite from '../assets/linkedInWhite.svg?react';
 import Logo from '../assets/logo.svg?react';
+import { useThemeState } from '../hooks/useThemeState';
 import ImageButton from './ImageButton';
 
 /** Footer component to be used on all pages */
 export default function Footer() {
-  const handleSendEmail = () => {
-    window.open('mailto:software.2.omar@zubaidi.aleeas.com', '_self');
-  };
-  const handleOpenGitHub = () => {
-    window.open('https://github.com/omarzubaidi', '_blank');
-  };
-  const handleOpenLinkedIn = () => {
-    window.open('https://www.linkedin.com/in/omarzubaidi', '_blank');
-  };
+  const { theme } = useThemeState();
 
   return (
     <footer
@@ -40,7 +34,7 @@ export default function Footer() {
         <ImageButton
           image={<Email />}
           label="Email me"
-          onClick={handleSendEmail}
+          link="mailto:software.2.omar@zubaidi.aleeas.com"
           buttonStyle={{
             backgroundColor: 'transparent',
             border: 'none',
@@ -52,7 +46,9 @@ export default function Footer() {
           // github forbids changing the color https://github.com/logos
           image={<GitHub />}
           label="Check out my GitHub profile"
-          onClick={handleOpenGitHub}
+          onClick={() => {
+            window.open('https://github.com/omarzubaidi', '_blank');
+          }}
           buttonStyle={{
             backgroundColor: 'transparent',
             border: 'none',
@@ -61,9 +57,11 @@ export default function Footer() {
         />
         <ImageButton
           // linkedin forbids changing the color https://brand.linkedin.com/in-logo
-          image={<LinkedIn />}
+          image={theme === 'light' ? <LinkedInBlack /> : <LinkedInWhite />}
           label="Check out my LinkedIn profile"
-          onClick={handleOpenLinkedIn}
+          onClick={() => {
+            window.open('https://www.linkedin.com/in/omarzubaidi', '_blank');
+          }}
           buttonStyle={{
             backgroundColor: 'transparent',
             border: 'none',

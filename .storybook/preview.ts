@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react-vite';
 import '../src/index.css';
 import { withRouter } from './decorators/withRouter';
+import { withThemeProvider } from './decorators/withThemeProvider';
 
 const preview: Preview = {
   parameters: {
@@ -25,7 +26,7 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [withRouter],
+  decorators: [withRouter, withThemeProvider],
   tags: ['autodocs'],
 };
 

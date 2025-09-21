@@ -8,6 +8,7 @@ import Footer from './Footer';
 
 const windowOpenSpy = fn();
 const windowOpen = window.open;
+const windowMatchMedia = window.matchMedia;
 
 // -----------------------------------------------------------------------------
 // core story definition, including before and after hooks and argTypes
@@ -21,6 +22,7 @@ const meta = {
   afterEach: () => {
     windowOpenSpy.mockClear();
     window.open = windowOpen;
+    window.matchMedia = windowMatchMedia;
   },
 } satisfies Meta<typeof Footer>;
 export default meta;
@@ -53,19 +55,8 @@ export const Default: Story = {
       isInaccessible(logo);
     });
 
-    await step('check the email icon is clickable and accessible', async () => {
-      const emailLinkArguments = ['mailto:software.2.omar@zubaidi.aleeas.com', '_self'] as const;
-
-      await step('check the email icon is clickable', async () => {
-        await user.click(emailIcon);
-        await expect(windowOpenSpy).toHaveBeenCalledWith(...emailLinkArguments);
-      });
-
-      await step('check the email icon is accessible', async () => {
-        emailIcon.focus();
-        await user.keyboard('{Enter}');
-        await expect(windowOpenSpy).toHaveBeenCalledWith(...emailLinkArguments);
-      });
+    await step('check the email icon has the correct link', async () => {
+      await expect(emailIcon).toHaveAttribute('href', 'mailto:software.2.omar@zubaidi.aleeas.com');
     });
 
     await step('check the github icon is clickable and accessible', async () => {
@@ -103,3 +94,25 @@ export const Default: Story = {
 // -----------------------------------------------------------------------------
 // story variants. test arguments and their effects or state changes
 // -----------------------------------------------------------------------------
+
+export const LightMode: Story = {
+  play: async ({ canvas }) => {
+    const linkedInBlack = canvas.getByTitle('linkedin-black');
+    await expect(linkedInBlack).toBeInTheDocument();
+  },
+};
+
+export const DarkMode: Story = {
+  beforeEach: () => {
+    window.matchMedia = fn().mockImplementation((query: string) => {
+      if (query === '(prefers-color-scheme: dark)') {
+        return { matches: true };
+      }
+      return windowMatchMedia(query);
+    });
+  },
+  play: async ({ canvas }) => {
+    const linkedInWhite = canvas.getByTitle('linkedin-white');
+    await expect(linkedInWhite).toBeInTheDocument();
+  },
+};
