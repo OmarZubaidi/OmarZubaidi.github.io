@@ -26,7 +26,7 @@ export default function Header() {
             color: 'var(--color-text)',
           }}
         />
-        <h1 color="var(--color-primary)">Omar</h1>
+        <h1 style={{ color: 'var(--color-primary)' }}>Omar's Projects</h1>
       </div>
       <ToggleTheme />
     </header>
