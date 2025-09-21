@@ -45,9 +45,8 @@ export default function Footer() {
           // github forbids changing the color https://github.com/logos
           image={<GitHub />}
           label="Check out my GitHub profile"
-          onClick={() => {
-            window.open('https://github.com/omarzubaidi', '_blank');
-          }}
+          link="https://github.com/omarzubaidi"
+          linkNewTab
           buttonStyle={{
             backgroundColor: 'transparent',
             border: 'none',
@@ -58,9 +57,8 @@ export default function Footer() {
           // linkedin forbids changing the color https://brand.linkedin.com/in-logo
           image={theme === 'light' ? <LinkedInBlack /> : <LinkedInWhite />}
           label="Check out my LinkedIn profile"
-          onClick={() => {
-            window.open('https://www.linkedin.com/in/omarzubaidi', '_blank');
-          }}
+          link="https://www.linkedin.com/in/omarzubaidi"
+          linkNewTab
           buttonStyle={{
             backgroundColor: 'transparent',
             border: 'none',

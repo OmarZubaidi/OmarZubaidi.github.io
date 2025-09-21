@@ -1,13 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, fn, isInaccessible, userEvent } from 'storybook/test';
+import { expect, fn, isInaccessible } from 'storybook/test';
 import Footer from './Footer';
 
 // -----------------------------------------------------------------------------
 // functions that override default behavior
 // -----------------------------------------------------------------------------
 
-const windowOpenSpy = fn();
-const windowOpen = window.open;
 const windowMatchMedia = window.matchMedia;
 
 // -----------------------------------------------------------------------------
@@ -16,12 +14,7 @@ const windowMatchMedia = window.matchMedia;
 
 const meta = {
   component: Footer,
-  beforeEach: () => {
-    window.open = windowOpenSpy;
-  },
   afterEach: () => {
-    windowOpenSpy.mockClear();
-    window.open = windowOpen;
     window.matchMedia = windowMatchMedia;
   },
 } satisfies Meta<typeof Footer>;
@@ -38,7 +31,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   play: async ({ canvas, step }) => {
-    const user = userEvent.setup({ skipClick: true });
     const logo = canvas.getByTitle('logo');
     const emailIcon = canvas.getByLabelText('Email me');
     const gitHubIcon = canvas.getByLabelText('Check out my GitHub profile');
@@ -57,36 +49,17 @@ export const Default: Story = {
 
     await step('check the email icon has the correct link', async () => {
       await expect(emailIcon).toHaveAttribute('href', 'mailto:software.2.omar@zubaidi.aleeas.com');
+      await expect(emailIcon).toHaveAttribute('target', '_self');
     });
 
-    await step('check the github icon is clickable and accessible', async () => {
-      const gitHubLinkArguments = ['https://github.com/omarzubaidi', '_blank'] as const;
-
-      await step('check the github icon is clickable', async () => {
-        await user.click(gitHubIcon);
-        await expect(windowOpenSpy).toHaveBeenCalledWith(...gitHubLinkArguments);
-      });
-
-      await step('check the github icon is accessible', async () => {
-        gitHubIcon.focus();
-        await user.keyboard('{Enter}');
-        await expect(windowOpenSpy).toHaveBeenCalledWith(...gitHubLinkArguments);
-      });
+    await step('check the github icon has the correct link', async () => {
+      await expect(gitHubIcon).toHaveAttribute('href', 'https://github.com/omarzubaidi');
+      await expect(gitHubIcon).toHaveAttribute('target', '_blank');
     });
 
-    await step('check the linkedin icon is clickable and accessible', async () => {
-      const linkedInLinkArguments = ['https://www.linkedin.com/in/omarzubaidi', '_blank'] as const;
-
-      await step('check the linkedin icon is clickable', async () => {
-        await user.click(linkedInIcon);
-        await expect(windowOpenSpy).toHaveBeenCalledWith(...linkedInLinkArguments);
-      });
-
-      await step('check the linkedin icon is accessible', async () => {
-        linkedInIcon.focus();
-        await user.keyboard('{Enter}');
-        await expect(windowOpenSpy).toHaveBeenCalledWith(...linkedInLinkArguments);
-      });
+    await step('check the linkedin icon has the correct link', async () => {
+      await expect(linkedInIcon).toHaveAttribute('href', 'https://www.linkedin.com/in/omarzubaidi');
+      await expect(linkedInIcon).toHaveAttribute('target', '_blank');
     });
   },
 };

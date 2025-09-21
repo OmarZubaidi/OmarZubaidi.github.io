@@ -106,7 +106,22 @@ export const LinkButton: Story = {
     link: 'https://example.com',
   },
   play: async ({ args, canvas }) => {
-    await expect(canvas.getByRole('link')).toHaveAttribute('href', args.link);
+    const link = canvas.getByRole('link');
+    await expect(link).toHaveAttribute('href', args.link);
+    await expect(link).toHaveAttribute('target', '_self');
+  },
+};
+
+export const LinkNewTabButton: Story = {
+  args: {
+    onClick: undefined,
+    link: 'https://example.com',
+    linkNewTab: true,
+  },
+  play: async ({ args, canvas }) => {
+    const link = canvas.getByRole('link');
+    await expect(link).toHaveAttribute('href', args.link);
+    await expect(link).toHaveAttribute('target', '_blank');
   },
 };
 

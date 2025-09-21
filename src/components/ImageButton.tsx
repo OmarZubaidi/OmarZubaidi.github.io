@@ -11,6 +11,8 @@ interface ImageButtonProps {
   /** A link to navigate to when the button is clicked. Makes the button act as a hyperlink instead. At least one of `onClick` or `link` must be provided. */
   link?: string;
   // Optional props
+  /** Whether to open the link in a new tab. Only applies if `link` is provided. Default: false */
+  linkNewTab?: boolean;
   /** Button height. */
   height?: CSSProperties['height'];
   /** Button padding. */
@@ -35,6 +37,7 @@ export default function ImageButton({
   label,
   onClick,
   link,
+  linkNewTab = false,
   height = '32px',
   padding = 'var(--padding)',
   buttonStyle,
@@ -64,8 +67,14 @@ export default function ImageButton({
   }
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    <Link to={link!} aria-label={label} style={{ color: 'inherit', textDecoration: 'none' }}>
+    <Link
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      to={link!}
+      target={linkNewTab ? '_blank' : '_self'}
+      rel="noopener noreferrer"
+      aria-label={label}
+      style={{ color: 'inherit', textDecoration: 'none' }}
+    >
       {imageJsx}
     </Link>
   );
