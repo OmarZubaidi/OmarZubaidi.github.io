@@ -94,9 +94,11 @@ html {
   --_color-background: #ffffff;
 
   --color-gray: #bfbfbf;
+  --color-gray-2: #bebebe;
   --color-accent: #bf82fd;
 
   --border-radius-sm: 0.5rem;
+  --border-radius-md: 1rem;
   --border-radius-lg: 2rem;
   --padding: 1rem;
   --margin: 1rem;
@@ -173,4 +175,29 @@ html:has(body[data-theme='dark']) {
   100% {
     --gradient-angle: 360deg;
   }
+}
+
+/* -------------------------------------------------------------------------- */
+
+.glassy {
+  --border-width: 1px;
+  /* border-radius: var(--border-radius-md); */
+  position: relative;
+
+  background: hsl(from var(--color-background) h s l / 0.25);
+  backdrop-filter: blur(12px);
+}
+
+.glassy::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  border: var(--border-width) solid transparent;
+  background: linear-gradient(var(--color-gray), var(--color-gray-2)) border-box;
+  mask:
+    linear-gradient(black, black) border-box,
+    linear-gradient(black, black) padding-box;
+  mask-composite: subtract;
 }
