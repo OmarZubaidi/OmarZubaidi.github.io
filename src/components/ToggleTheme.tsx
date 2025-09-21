@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
 import BulbOff from '../assets/bulbOff.svg?react';
 import BulbOn from '../assets/bulbOn.svg?react';
+import { useThemeState } from '../hooks/useThemeState';
 
 /**
  * ToggleTheme component
@@ -9,18 +9,7 @@ import BulbOn from '../assets/bulbOn.svg?react';
  * current theme.
  */
 export default function ToggleTheme() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(
-    // default to light mode
-    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
-  );
-
-  useEffect(() => {
-    document.body.dataset.theme = theme;
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
+  const { theme, switchTheme } = useThemeState();
 
   return (
     <button
@@ -28,7 +17,7 @@ export default function ToggleTheme() {
       // completely blind users can't see theme colors, but light sensitive users may prefer dark mode
       aria-live="polite"
       aria-pressed={theme === 'dark'}
-      onClick={toggleTheme}
+      onClick={switchTheme}
       type="button"
       style={{
         background: 'transparent',

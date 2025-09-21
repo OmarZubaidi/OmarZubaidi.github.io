@@ -94,8 +94,11 @@ html {
   --_color-background: #ffffff;
 
   --color-gray: #bfbfbf;
+  --color-gray-2: #bebebe;
+  --color-accent: #bf82fd;
 
   --border-radius-sm: 0.5rem;
+  --border-radius-md: 1rem;
   --border-radius-lg: 2rem;
   --padding: 1rem;
   --margin: 1rem;
@@ -130,4 +133,71 @@ html:has(body[data-theme='dark']) {
   color: var(--color-text);
   background-color: var(--color-background);
   /* eslint-enable css/no-invalid-properties */
+}
+
+/* -------------------------------------------------------------------------- */
+
+.glowing-border {
+  /* the only thing you should change is the gradient colors */
+  --gradient-colors:
+    var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-secondary), var(--color-primary);
+
+  border: none;
+  background: var(--color-background);
+  position: relative;
+}
+
+.glowing-border::before,
+.glowing-border::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  background: conic-gradient(from var(--gradient-angle), var(--gradient-colors));
+  border-radius: inherit;
+  animation: rotation 3s linear infinite;
+}
+
+.glowing-border::after {
+  filter: blur(0.25rem);
+}
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+
+.glassy {
+  --border-width: 1px;
+  /* border-radius: var(--border-radius-md); */
+  position: relative;
+
+  background: hsl(from var(--color-background) h s l / 0.25);
+  backdrop-filter: blur(12px);
+}
+
+.glassy::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  border: var(--border-width) solid transparent;
+  background: linear-gradient(var(--color-gray), var(--color-gray-2)) border-box;
+  mask:
+    linear-gradient(black, black) border-box,
+    linear-gradient(black, black) padding-box;
+  mask-composite: subtract;
 }
