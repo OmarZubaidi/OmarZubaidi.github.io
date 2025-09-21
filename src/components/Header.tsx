@@ -9,7 +9,6 @@ export default function Header() {
       style={{
         alignItems: 'center',
         borderBlockEnd: '1px solid var(--color-gray)',
-        boxShadow: '0 0 4px 0 rgba(0, 0, 0, 0.1)',
         display: 'flex',
         justifyContent: 'space-between',
         padding: 'var(--padding)',

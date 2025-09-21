@@ -14,8 +14,7 @@ export default function Footer() {
     <footer
       style={{
         alignItems: 'center',
-        borderBlockEnd: '1px solid var(--color-gray)',
-        boxShadow: '0 0 4px 0 rgba(0, 0, 0, 0.1)',
+        borderBlockStart: '1px solid var(--color-gray)',
         display: 'flex',
         justifyContent: 'space-between',
         padding: 'var(--padding)',
