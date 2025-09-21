@@ -132,3 +132,45 @@ html:has(body[data-theme='dark']) {
   background-color: var(--color-background);
   /* eslint-enable css/no-invalid-properties */
 }
+
+/* -------------------------------------------------------------------------- */
+
+.glowing-border {
+  /* the only thing you should change is the gradient colors */
+  --gradient-colors:
+    var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-secondary), var(--color-primary);
+
+  border: none;
+  background: var(--color-background);
+  position: relative;
+}
+
+.glowing-border::before,
+.glowing-border::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  background: conic-gradient(from var(--gradient-angle), var(--gradient-colors));
+  border-radius: inherit;
+  animation: rotation 3s linear infinite;
+}
+
+.glowing-border::after {
+  filter: blur(0.25rem);
+}
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
