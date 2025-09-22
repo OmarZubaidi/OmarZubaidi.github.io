@@ -103,8 +103,8 @@ html {
   --padding: 1rem;
   --margin: 1rem;
 
-  --header-height: 15vh;
-  --footer-height: 10vh;
+  --header-height: max(15vh, 150px);
+  --footer-height: max(10vh, 50px);
 
   font-size: 16px;
 }
