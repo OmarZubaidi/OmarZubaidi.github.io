@@ -73,7 +73,7 @@ export default function ImageButton({
       target={linkNewTab ? '_blank' : '_self'}
       rel="noopener noreferrer"
       aria-label={label}
-      style={{ color: 'inherit', textDecoration: 'none' }}
+      style={{ color: 'inherit', textDecoration: 'none', ...buttonStyle }}
     >
       {imageJsx}
     </Link>

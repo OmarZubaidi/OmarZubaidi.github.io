@@ -25,8 +25,6 @@ export default function Footer() {
         label="Email me"
         link="mailto:software.2.omar@zubaidi.aleeas.com"
         buttonStyle={{
-          backgroundColor: 'transparent',
-          border: 'none',
           padding: 0,
           color: 'var(--color-text)',
         }}
@@ -38,8 +36,6 @@ export default function Footer() {
         link="https://github.com/omarzubaidi"
         linkNewTab
         buttonStyle={{
-          backgroundColor: 'transparent',
-          border: 'none',
           padding: 0,
         }}
       />
@@ -50,8 +46,6 @@ export default function Footer() {
         link="https://www.linkedin.com/in/omarzubaidi"
         linkNewTab
         buttonStyle={{
-          backgroundColor: 'transparent',
-          border: 'none',
           padding: 0,
         }}
       />
