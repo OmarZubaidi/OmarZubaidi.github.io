@@ -6,12 +6,16 @@ import ToggleTheme from './ToggleTheme';
 export default function Header() {
   return (
     <header
+      className="glassy header-footer"
       style={{
         alignItems: 'center',
-        borderBlockEnd: '1px solid var(--color-gray)',
         display: 'flex',
         justifyContent: 'space-between',
         padding: 'var(--padding)',
+        // shift it to get rid of the border except at the bottom
+        top: 0,
+        height: 'calc(var(--header-height) + 1px)',
+        transform: 'translateX(-1px) translateY(-1px)',
       }}
     >
       <div style={{ alignItems: 'center', display: 'flex', gap: 'var(--padding)' }}>

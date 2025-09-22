@@ -103,6 +103,9 @@ html {
   --padding: 1rem;
   --margin: 1rem;
 
+  --header-height: 15vh;
+  --footer-height: 10vh;
+
   font-size: 16px;
 }
 
@@ -133,6 +136,17 @@ html:has(body[data-theme='dark']) {
   color: var(--color-text);
   background-color: var(--color-background);
   /* eslint-enable css/no-invalid-properties */
+}
+
+.header-footer {
+  /* override glassy class */
+  position: fixed !important;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  /* eliminate border around edges without having to break the glassy class */
+  overflow: hidden;
+  width: calc(100% + 2px);
 }
 
 /* -------------------------------------------------------------------------- */

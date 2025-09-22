@@ -11,13 +11,17 @@ export default function Footer() {
 
   return (
     <footer
+      className="glassy header-footer"
       style={{
         alignItems: 'center',
-        borderBlockStart: '1px solid var(--color-gray)',
         display: 'flex',
         justifyContent: 'center',
         gap: 'calc(var(--padding) * 3)',
         padding: 'var(--padding)',
+        // shift it to get rid of the border except at the top
+        bottom: '0',
+        height: 'calc(var(--footer-height) + 1px)',
+        transform: 'translateX(-1px) translateY(+1px)',
       }}
     >
       <ImageButton
