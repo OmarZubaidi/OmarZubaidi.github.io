@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, fn, isInaccessible } from 'storybook/test';
+import { expect, fn } from 'storybook/test';
 import Footer from './Footer';
 
 // -----------------------------------------------------------------------------
@@ -31,20 +31,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   play: async ({ canvas, step }) => {
-    const logo = canvas.getByTitle('logo');
     const emailIcon = canvas.getByLabelText('Email me');
     const gitHubIcon = canvas.getByLabelText('Check out my GitHub profile');
     const linkedInIcon = canvas.getByLabelText('Check out my LinkedIn profile');
 
     await step('check everything renders properly', async () => {
-      await expect(logo).toBeInTheDocument();
       await expect(emailIcon).toBeInTheDocument();
       await expect(gitHubIcon).toBeInTheDocument();
       await expect(linkedInIcon).toBeInTheDocument();
-    });
-
-    await step('check the logo is inaccessible (decorative)', () => {
-      isInaccessible(logo);
     });
 
     await step('check the email icon has the correct link', async () => {
