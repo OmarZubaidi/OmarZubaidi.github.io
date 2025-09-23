@@ -123,3 +123,7 @@ export const DarkMode: Story = {
     });
   },
 };
+
+export const Mobile: Story = {
+  globals: { viewport: 'mobile1' },
+};

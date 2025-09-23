@@ -83,3 +83,7 @@ export const DarkMode: Story = {
     await expect(linkedInWhite).toBeInTheDocument();
   },
 };
+
+export const Mobile: Story = {
+  globals: { viewport: 'mobile1' },
+};

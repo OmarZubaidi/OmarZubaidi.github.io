@@ -52,11 +52,16 @@ type Story = StoryObj<typeof meta>;
 // constants and helper functions
 // -----------------------------------------------------------------------------
 
+const onClickMock = fn();
+
 // -----------------------------------------------------------------------------
 // default story. test core functionality, accessibility, and function calls
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
+  args: {
+    onClick: onClickMock,
+  },
   play: async ({ canvas, step }) => {
     const button = canvas.getByRole('button');
 
@@ -75,7 +80,6 @@ export const Default: Story = {
 // story variants. test arguments and their effects or state changes
 // -----------------------------------------------------------------------------
 
-const onClickMock = fn();
 export const OnClickButton: Story = {
   args: {
     onClick: onClickMock,
@@ -186,4 +190,8 @@ export const LogoIcon: Story = {
     await expect(button).toHaveStyle('border-style: none');
     await expect(button).toHaveStyle('color: #212121');
   },
+};
+
+export const Mobile: Story = {
+  globals: { viewport: 'mobile1' },
 };
