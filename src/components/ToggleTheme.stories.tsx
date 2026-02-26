@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { Canvas } from 'storybook/internal/csf';
 import { expect, fn, userEvent } from 'storybook/test';
 import ToggleTheme from './ToggleTheme';
 
@@ -25,6 +24,8 @@ type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 // constants and helper functions
 // -----------------------------------------------------------------------------
+
+type Canvas = Parameters<NonNullable<Story['play']>>[0]['canvas'];
 
 async function assertLightMode(canvas: Canvas) {
   await expect(document.body.dataset.theme).toBe('light');
