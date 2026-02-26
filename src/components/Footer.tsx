@@ -20,7 +20,7 @@ export default function Footer() {
         padding: 'var(--padding)',
         // shift it to get rid of the border except at the top
         bottom: '0',
-        height: 'calc(var(--footer-height) + 1px)',
+        minHeight: 'calc(var(--footer-height) + 1px)',
         transform: 'translateX(-1px) translateY(+1px)',
       }}
     >
