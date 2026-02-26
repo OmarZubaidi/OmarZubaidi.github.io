@@ -14,9 +14,10 @@ const windowMatchMedia = window.matchMedia;
 
 const meta = {
   args: {
-    imageSide: 'left',
-    image: 'https://lipsum.app/640x480/',
-    altText: 'Placeholder image',
+    mediaSide: 'left',
+    mediaPart: (
+      <img src="https://lipsum.app/640x480/" alt="Placeholder" style={{ borderRadius: 'var(--border-radius-lg)' }} />
+    ),
     textPart: <p>This is a placeholder text alongside the image.</p>,
   },
   component: TextAndMedia,
@@ -37,7 +38,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   play: async ({ canvas, step }) => {
-    const image = canvas.getByAltText('Placeholder image');
+    const image = canvas.getByAltText('Placeholder');
     const text = canvas.getByText('This is a placeholder text alongside the image.');
 
     await expect(image).toBeVisible();
@@ -60,10 +61,10 @@ export const Default: Story = {
 
 export const RightSide: Story = {
   args: {
-    imageSide: 'right',
+    mediaSide: 'right',
   },
   play: async ({ canvas, step }) => {
-    const image = canvas.getByAltText('Placeholder image');
+    const image = canvas.getByAltText('Placeholder');
     const text = canvas.getByText('This is a placeholder text alongside the image.');
 
     await expect(image).toBeVisible();
@@ -96,7 +97,7 @@ export const Mobile: Story = {
     },
   },
   play: async ({ canvas, step }) => {
-    const image = canvas.getByAltText('Placeholder image');
+    const image = canvas.getByAltText('Placeholder');
     const text = canvas.getByText('This is a placeholder text alongside the image.');
 
     await expect(image).toBeVisible();
