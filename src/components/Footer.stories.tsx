@@ -30,6 +30,11 @@ type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
+  globals: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+  },
   play: async ({ canvas, step }) => {
     const emailIcon = canvas.getByLabelText('Email me');
     const gitHubIcon = canvas.getByLabelText('Check out my GitHub profile');
@@ -86,4 +91,8 @@ export const DarkMode: Story = {
 
 export const Mobile: Story = {
   globals: { viewport: 'mobile1' },
+};
+
+export const Tablet: Story = {
+  globals: { viewport: 'tablet' },
 };

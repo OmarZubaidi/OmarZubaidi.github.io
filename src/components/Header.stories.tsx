@@ -25,6 +25,11 @@ type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
+  globals: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+  },
   play: async ({ canvas, step }) => {
     const logoIcon = canvas.getByLabelText('Return to home page');
 
@@ -47,4 +52,8 @@ export const Default: Story = {
 
 export const Mobile: Story = {
   globals: { viewport: 'mobile1' },
+};
+
+export const Tablet: Story = {
+  globals: { viewport: 'tablet' },
 };

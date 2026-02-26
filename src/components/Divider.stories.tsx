@@ -25,6 +25,11 @@ type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
+  globals: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+  },
   play: async ({ canvas, step }) => {
     const divider = canvas.getByRole('separator');
 
@@ -40,4 +45,22 @@ export const Default: Story = {
 
 export const Mobile: Story = {
   globals: { viewport: 'mobile1' },
+};
+
+export const Tablet: Story = {
+  globals: { viewport: 'tablet' },
+};
+
+export const InContext: Story = {
+  decorators: [
+    (Story) => (
+      <div>
+        <p>This is a long paragraph of content above the dividers to demonstrate spacing and layout.</p>
+        <Story />
+        <p>This is a long paragraph of content between the dividers to demonstrate spacing and layout.</p>
+        <Story />
+        <p>This is a long paragraph of content below the dividers to demonstrate spacing and layout.</p>
+      </div>
+    ),
+  ],
 };

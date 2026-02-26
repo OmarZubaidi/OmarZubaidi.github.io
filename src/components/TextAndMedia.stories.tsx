@@ -37,6 +37,11 @@ type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
+  globals: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+  },
   play: async ({ canvas, step }) => {
     const image = canvas.getByAltText('Placeholder');
     const text = canvas.getByText('This is a placeholder text alongside the image.');
@@ -115,5 +120,112 @@ export const Mobile: Story = {
         await expect(imageRect.bottom).toBeLessThan(textRect.top);
       });
     });
+  },
+};
+
+export const Tablet: Story = {
+  globals: { viewport: 'tablet' },
+};
+
+export const WithReactComponent: Story = {
+  args: {
+    mediaSide: 'left',
+    mediaPart: (
+      <div
+        style={{
+          borderRadius: 'var(--border-radius-lg)',
+          padding: '1rem',
+          backgroundColor: 'var(--color-secondary)',
+          width: '100px',
+          height: '50px',
+        }}
+      />
+    ),
+    textPart: <p>This is a text description alongside a react component.</p>,
+  },
+};
+
+export const WithLongText: Story = {
+  args: {
+    mediaSide: 'right',
+    mediaPart: (
+      <img
+        src="https://lipsum.app/400x400/"
+        alt="Square gray box"
+        style={{ borderRadius: 'var(--border-radius-lg)' }}
+      />
+    ),
+    textPart: (
+      <div>
+        <h3>Long Form Content</h3>
+        {/* cSpell:disable */}
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        {/* cSpell:enable */}
+      </div>
+    ),
+  },
+};
+
+export const WithShortText: Story = {
+  args: {
+    mediaSide: 'left',
+    mediaPart: (
+      <img
+        src="https://lipsum.app/300x200/"
+        alt="Small square gray box"
+        style={{ borderRadius: 'var(--border-radius-lg)' }}
+      />
+    ),
+    textPart: <p>Brief text.</p>,
+  },
+};
+
+export const WithList: Story = {
+  args: {
+    mediaSide: 'right',
+    mediaPart: (
+      <img
+        src="https://lipsum.app/500x300/"
+        alt="Medium-sized gray box"
+        style={{ borderRadius: 'var(--border-radius-lg)' }}
+      />
+    ),
+    textPart: (
+      <div>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Responsive design</li>
+          <li>Accessibility compliant</li>
+          <li>Fast performance</li>
+          <li>Modern styling</li>
+        </ul>
+      </div>
+    ),
+  },
+};
+
+export const WithHeadingAndText: Story = {
+  args: {
+    mediaSide: 'left',
+    mediaPart: (
+      <img
+        src="https://lipsum.app/600x400/"
+        alt="Large square gray box"
+        style={{ borderRadius: 'var(--border-radius-lg)' }}
+      />
+    ),
+    textPart: (
+      <div>
+        <h2>Section Title</h2>
+        <p>This demonstrates a common pattern of heading followed by descriptive text.</p>
+      </div>
+    ),
   },
 };

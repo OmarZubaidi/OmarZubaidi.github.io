@@ -42,6 +42,11 @@ async function assertDarkMode(canvas: Canvas) {
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
+  globals: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+  },
   play: async ({ canvas, step }) => {
     const user = userEvent.setup({ skipClick: true });
     const button = canvas.getByRole('button');
@@ -127,4 +132,8 @@ export const DarkMode: Story = {
 
 export const Mobile: Story = {
   globals: { viewport: 'mobile1' },
+};
+
+export const Tablet: Story = {
+  globals: { viewport: 'tablet' },
 };
