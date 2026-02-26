@@ -20,7 +20,7 @@ interface TextAndMediaProps {
  * Text describing some aspect of the project (difficulties, technologies, etc.) with a corresponding image to draw in
  * the user's attention.
  *
- * It accepts any image imported as a React component or images contained within one.
+ * It accepts an image URL or path string.
  */
 export default function TextAndMedia({ imageSide, image, altText, textPart, imageStyle }: TextAndMediaProps) {
   const imageWithStyle = (
