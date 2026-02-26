@@ -1,6 +1,6 @@
 import { type CSSProperties, type JSX } from 'react';
 
-interface ImageButtonProps {
+interface TextAndMediaProps {
   /** Whether the image is on the left or right of the text. On small screens, the image will always be above the text. */
   imageSide: 'left' | 'right';
   /** Absolute image path to display within the button. */
@@ -22,7 +22,7 @@ interface ImageButtonProps {
  *
  * It accepts any image imported as a React component or images contained within one.
  */
-export default function ImageButton({ imageSide, image, altText, textPart, imageStyle }: ImageButtonProps) {
+export default function TextAndMedia({ imageSide, image, altText, textPart, imageStyle }: TextAndMediaProps) {
   const imageWithStyle = (
     <img
       src={image}
