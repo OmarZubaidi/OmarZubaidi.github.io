@@ -58,6 +58,11 @@ export const Default: Story = {
       await assertLightMode(canvas);
     });
 
+    await step('check the button is focusable', async () => {
+      button.focus();
+      await expect(button).toHaveFocus();
+    });
+
     await step('check the button is clickable', async () => {
       await user.click(button);
       await assertDarkMode(canvas);
