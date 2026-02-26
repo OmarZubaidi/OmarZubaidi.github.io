@@ -20,9 +20,10 @@ export default function ToggleTheme() {
       onClick={switchTheme}
       type="button"
       style={{
-        background: 'transparent',
+        background: 'var(--color-background)',
         border: '1px solid var(--color-gray)',
         borderRadius: 'var(--border-radius-lg)',
+        boxShadow: '0 0 200px var(--color-primary)',
         color: 'var(--color-text)',
         cursor: 'pointer',
         padding: 'var(--padding)',

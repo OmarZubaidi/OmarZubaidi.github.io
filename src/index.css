@@ -103,6 +103,9 @@ html {
   --padding: 1rem;
   --margin: 1rem;
 
+  --header-height: max(15vh, 150px);
+  --footer-height: max(10vh, 50px);
+
   font-size: 16px;
 }
 
@@ -137,31 +140,54 @@ html:has(body[data-theme='dark']) {
 
 /* -------------------------------------------------------------------------- */
 
+/* Simpler class styling */
+.header-footer {
+  /* override glassy class */
+  /* eslint-disable-next-line css/no-important */
+  position: fixed !important;
+  inset-inline: 0px;
+  z-index: 1000;
+  /* eliminate border around edges without having to break the glassy class */
+  overflow: hidden;
+  width: calc(100% + 2px);
+}
+
+.text-and-media {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.text-and-media--left {
+  flex-direction: row;
+}
+
+.text-and-media--right {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 760px) {
+  .text-and-media--left,
+  .text-and-media--right {
+    flex-direction: column;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Glowing border */
 .glowing-border {
   /* the only thing you should change is the gradient colors */
   --gradient-colors:
     var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-secondary), var(--color-primary);
 
   border: none;
+  /* eslint-disable-next-line css/no-invalid-properties */
   background: var(--color-background);
   position: relative;
 }
 
-.glowing-border::before,
-.glowing-border::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  z-index: -1;
-  background: conic-gradient(from var(--gradient-angle), var(--gradient-colors));
-  border-radius: inherit;
-  animation: rotation 3s linear infinite;
-}
-
-.glowing-border::after {
-  filter: blur(0.25rem);
-}
-
+/* eslint-disable-next-line css/use-baseline */
 @property --gradient-angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -177,14 +203,33 @@ html:has(body[data-theme='dark']) {
   }
 }
 
+.glowing-border::before,
+.glowing-border::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  /* eslint-disable-next-line css/no-invalid-properties */
+  background: conic-gradient(from var(--gradient-angle), var(--gradient-colors));
+  border-radius: inherit;
+  animation: rotation 3s linear infinite;
+}
+
+.glowing-border::after {
+  filter: blur(0.25rem);
+}
+
 /* -------------------------------------------------------------------------- */
 
+/* Glassy card */
 .glassy {
   --border-width: 1px;
   /* border-radius: var(--border-radius-md); */
   position: relative;
 
+  /* eslint-disable-next-line css/no-invalid-properties */
   background: hsl(from var(--color-background) h s l / 0.25);
+  /* eslint-disable-next-line css/use-baseline */
   backdrop-filter: blur(12px);
 }
 
@@ -196,8 +241,10 @@ html:has(body[data-theme='dark']) {
   border-radius: inherit;
   border: var(--border-width) solid transparent;
   background: linear-gradient(var(--color-gray), var(--color-gray-2)) border-box;
+  /* eslint-disable-next-line css/use-baseline */
   mask:
     linear-gradient(black, black) border-box,
     linear-gradient(black, black) padding-box;
+  /* eslint-disable-next-line css/use-baseline */
   mask-composite: subtract;
 }

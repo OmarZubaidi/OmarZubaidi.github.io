@@ -44,3 +44,7 @@ export const Default: Story = {
 // -----------------------------------------------------------------------------
 // story variants. test arguments and their effects or state changes
 // -----------------------------------------------------------------------------
+
+export const Mobile: Story = {
+  globals: { viewport: 'mobile1' },
+};

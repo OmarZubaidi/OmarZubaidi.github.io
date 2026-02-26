@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Home from './Home';
+import { expect } from 'storybook/test';
+import Divider from './Divider';
 
 // -----------------------------------------------------------------------------
 // functions that override default behavior
@@ -10,8 +11,8 @@ import Home from './Home';
 // -----------------------------------------------------------------------------
 
 const meta = {
-  component: Home,
-} satisfies Meta<typeof Home>;
+  component: Divider,
+} satisfies Meta<typeof Divider>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
@@ -23,7 +24,15 @@ type Story = StoryObj<typeof meta>;
 // default story. test core functionality, accessibility, and function calls
 // -----------------------------------------------------------------------------
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ canvas, step }) => {
+    const divider = canvas.getByRole('separator');
+
+    await step('check everything renders properly', async () => {
+      await expect(divider).toBeInTheDocument();
+    });
+  },
+};
 
 // -----------------------------------------------------------------------------
 // story variants. test arguments and their effects or state changes
