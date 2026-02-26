@@ -106,9 +106,6 @@ export const Mobile: Story = {
       const imageRect = image.getBoundingClientRect();
       const textRect = text.getBoundingClientRect();
 
-      console.log('imageRect', imageRect);
-      console.log('textRect', textRect);
-
       await step('check image top edge is above text top edge', async () => {
         await expect(imageRect.top).toBeLessThan(textRect.top);
       });
