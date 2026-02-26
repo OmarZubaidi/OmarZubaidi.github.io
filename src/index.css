@@ -159,6 +159,21 @@ html:has(body[data-theme='dark']) {
   gap: 1.5rem;
 }
 
+.text-and-media--left {
+  flex-direction: row;
+}
+
+.text-and-media--right {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 760px) {
+  .text-and-media--left,
+  .text-and-media--right {
+    flex-direction: column;
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 
 /* Glowing border */
