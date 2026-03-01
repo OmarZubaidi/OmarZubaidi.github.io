@@ -7,8 +7,6 @@ interface LogoCarouselProps {
   rows?: number;
   /** Duration of the scrolling animation (default: '20s'). */
   animationDuration?: string;
-  /** Height of the carousel container (default: 200px). */
-  height?: string;
   /** Other CSS style attributes for the carousel container. */
   containerStyle?: CSSProperties;
 }
@@ -24,7 +22,6 @@ export default function LogoCarousel({
   logos,
   rows = 2,
   animationDuration = '20s',
-  // height = '200px',
   containerStyle,
 }: LogoCarouselProps) {
   if (logos.length === 0) {
@@ -53,7 +50,6 @@ export default function LogoCarousel({
         flexDirection: 'column',
         justifyContent: 'center',
         maxWidth: '600px',
-        // height,
         ...containerStyle,
       }}
     >
