@@ -1,0 +1,95 @@
+import { cloneElement, Fragment, type CSSProperties, type JSX } from 'react';
+
+interface ImageCarouselProps {
+  /** Array of logos/images to display in the carousel. */
+  logos: JSX.Element[];
+  /** Number of rows in the carousel (default: 2). */
+  rows?: number;
+  /** Duration of the scrolling animation (default: '20s'). */
+  animationDuration?: string;
+  /** Height of the carousel container (default: 200px). */
+  height?: string;
+  /** Other CSS style attributes for the carousel container. */
+  containerStyle?: CSSProperties;
+}
+
+/**
+ * Logo grid carousel component
+ *
+ * A grid of rows where each row scrolls horizontally, with adjacent rows
+ * alternating between scrolling left and right. Logos loop seamlessly and the
+ * animation pauses on hover/focus.
+ */
+export default function ImageCarousel({
+  logos,
+  rows = 2,
+  animationDuration = '20s',
+  // height = '200px',
+  containerStyle,
+}: ImageCarouselProps) {
+  if (logos.length === 0) {
+    throw new Error('ImageCarousel must have at least one logo');
+  }
+
+  const logosPerRow = Math.ceil(logos.length / rows);
+  const filledRows = Array.from({ length: rows }, (_, i) => logos.slice(i * logosPerRow, (i + 1) * logosPerRow));
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const edgeFades = 'linear-gradient(90deg, transparent, var(--color-text) 20%, var(--color-text) 80%, transparent)';
+
+  return (
+    <div
+      aria-label="Tech stack logos carousel"
+      style={{
+        ...(prefersReducedMotion
+          ? {}
+          : {
+              overflow: 'hidden',
+              mask: edgeFades,
+              WebkitMask: edgeFades,
+            }),
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        maxWidth: '600px',
+        // height,
+        ...containerStyle,
+      }}
+    >
+      {filledRows.map((rowLogos, rowIndex) => {
+        return (
+          <div
+            key={rowIndex}
+            style={{
+              ...(prefersReducedMotion
+                ? {
+                    flexWrap: 'nowrap',
+                  }
+                : {
+                    width: 'max-content',
+                    flexWrap: 'wrap',
+                    animation: `scroll ${animationDuration} linear infinite ${rowIndex % 2 === 0 ? 'normal' : 'reverse'}`,
+                  }),
+              margin: 0,
+              paddingInline: 0,
+              listStyle: 'none',
+              display: 'flex',
+              gap: 'var(--padding)',
+              paddingBlockEnd: rowIndex < rows - 1 ? 'var(--padding)' : undefined,
+            }}
+          >
+            {/* create the infinite loop but don't break accessibility by hiding the duplicates */}
+            {[
+              ...rowLogos,
+              ...rowLogos.map((item) => cloneElement(item, { 'aria-hidden': true })),
+              ...rowLogos.map((item) => cloneElement(item, { 'aria-hidden': true })),
+            ].map((logo, index) => (
+              <Fragment key={index}>{logo}</Fragment>
+            ))}
+          </div>
+        );
+      })}
+    </div>
+  );
+}

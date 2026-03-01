@@ -260,3 +260,13 @@ html:has(body[data-theme='dark']) {
   transform: translate(-50%, -50%);
   color: var(--color-gray);
 }
+
+/* -------------------------------------------------------------------------- */
+
+/* Image carousel */
+
+@keyframes scroll {
+  to {
+    transform: translateX(calc(-50% - var(--padding) / 2));
+  }
+}
