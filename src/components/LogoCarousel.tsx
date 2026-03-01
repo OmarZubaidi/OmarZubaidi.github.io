@@ -64,11 +64,11 @@ export default function LogoCarousel({
             style={{
               ...(prefersReducedMotion
                 ? {
-                    flexWrap: 'nowrap',
+                    flexWrap: 'wrap',
                   }
                 : {
                     width: 'max-content',
-                    flexWrap: 'wrap',
+                    flexWrap: 'nowrap',
                     animation: `scroll ${animationDuration} linear infinite ${rowIndex % 2 === 0 ? 'normal' : 'reverse'}`,
                   }),
               margin: 0,
