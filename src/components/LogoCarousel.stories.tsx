@@ -87,8 +87,7 @@ export const Default: Story = {
 
     await step('check aria-hidden duplicates exist for seamless loop', async () => {
       const hiddenImages = carousel.querySelectorAll('img[aria-hidden="true"]');
-      // 12 logos * 2 duplicates
-      await expect(hiddenImages).toHaveLength(24);
+      await expect(hiddenImages).toHaveLength(12);
     });
   },
 };

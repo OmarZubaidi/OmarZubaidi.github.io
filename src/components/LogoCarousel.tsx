@@ -73,13 +73,11 @@ export default function LogoCarousel({
             }}
           >
             {/* create the infinite loop but don't break accessibility by hiding the duplicates */}
-            {[
-              ...rowLogos,
-              ...rowLogos.map((item) => cloneElement(item, { 'aria-hidden': true })),
-              ...rowLogos.map((item) => cloneElement(item, { 'aria-hidden': true })),
-            ].map((logo, index) => (
-              <Fragment key={index}>{logo}</Fragment>
-            ))}
+            {[...rowLogos, ...rowLogos.map((item) => cloneElement(item, { 'aria-hidden': true }))].map(
+              (logo, index) => (
+                <Fragment key={index}>{logo}</Fragment>
+              ),
+            )}
           </div>
         );
       })}
