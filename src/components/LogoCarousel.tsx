@@ -26,6 +26,9 @@ export default function LogoCarousel({
   if (logos.length === 0) {
     throw new Error('LogoCarousel must have at least one logo');
   }
+  if (!Number.isInteger(rows) || rows < 1) {
+    throw new Error('LogoCarousel "rows" must be a positive integer (>= 1)');
+  }
 
   const logosPerRow = Math.ceil(logos.length / rows);
   const filledRows = Array.from({ length: rows }, (_, i) => logos.slice(i * logosPerRow, (i + 1) * logosPerRow));
