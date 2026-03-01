@@ -23,7 +23,13 @@ type Story = StoryObj<typeof meta>;
 // default story. test core functionality, accessibility, and function calls
 // -----------------------------------------------------------------------------
 
-export const Default: Story = {};
+export const Default: Story = {
+  globals: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+  },
+};
 
 // -----------------------------------------------------------------------------
 // story variants. test arguments and their effects or state changes
@@ -31,4 +37,8 @@ export const Default: Story = {};
 
 export const Mobile: Story = {
   globals: { viewport: 'mobile1' },
+};
+
+export const Tablet: Story = {
+  globals: { viewport: 'tablet' },
 };

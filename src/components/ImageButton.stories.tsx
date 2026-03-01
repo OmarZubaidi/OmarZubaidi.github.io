@@ -4,6 +4,12 @@ import Logo from '../assets/logo.svg?react';
 import ImageButton from './ImageButton';
 
 // -----------------------------------------------------------------------------
+// constants and helper functions
+// -----------------------------------------------------------------------------
+
+const onClickMock = fn();
+
+// -----------------------------------------------------------------------------
 // functions that override default behavior
 // -----------------------------------------------------------------------------
 
@@ -49,16 +55,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // -----------------------------------------------------------------------------
-// constants and helper functions
-// -----------------------------------------------------------------------------
-
-const onClickMock = fn();
-
-// -----------------------------------------------------------------------------
 // default story. test core functionality, accessibility, and function calls
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
+  globals: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+  },
   args: {
     onClick: onClickMock,
   },
@@ -79,6 +84,14 @@ export const Default: Story = {
 // -----------------------------------------------------------------------------
 // story variants. test arguments and their effects or state changes
 // -----------------------------------------------------------------------------
+
+export const Mobile: Story = {
+  globals: { viewport: 'mobile1' },
+};
+
+export const Tablet: Story = {
+  globals: { viewport: 'tablet' },
+};
 
 export const OnClickButton: Story = {
   args: {
@@ -192,6 +205,56 @@ export const LogoIcon: Story = {
   },
 };
 
-export const Mobile: Story = {
-  globals: { viewport: 'mobile1' },
+export const LargeButton: Story = {
+  args: {
+    height: 64,
+    padding: 24,
+  },
+  play: async ({ canvas }) => {
+    const button = canvas.getByRole('button');
+    await expect(button).toHaveStyle('height: 116px');
+    await expect(button).toHaveStyle('padding: 24px');
+  },
+};
+
+export const SmallButton: Story = {
+  args: {
+    height: 16,
+    padding: 4,
+  },
+  play: async ({ canvas }) => {
+    const button = canvas.getByRole('button');
+    await expect(button).toHaveStyle('height: 28px');
+    await expect(button).toHaveStyle('padding: 4px');
+  },
+};
+
+export const NoBackgroundButton: Story = {
+  args: {
+    buttonStyle: {
+      backgroundColor: 'transparent',
+      border: 'none',
+    },
+  },
+  play: async ({ canvas }) => {
+    const button = canvas.getByRole('button');
+    await expect(button).toHaveStyle('background-color: rgba(0, 0, 0, 0)');
+    await expect(button).toHaveStyle('border-style: none');
+  },
+};
+
+export const CircularButton: Story = {
+  args: {
+    height: 32,
+    padding: 16,
+    buttonStyle: {
+      borderRadius: '50%',
+      backgroundColor: 'rgba(255, 0, 255, 0.5)',
+      border: '2px solid rgb(255, 0, 255)',
+    },
+  },
+  play: async ({ canvas }) => {
+    const button = canvas.getByRole('button');
+    await expect(button).toHaveStyle('border-radius: 50%');
+  },
 };

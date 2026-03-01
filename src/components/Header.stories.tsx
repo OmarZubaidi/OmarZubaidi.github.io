@@ -3,6 +3,10 @@ import { expect } from 'storybook/test';
 import Header from './Header';
 
 // -----------------------------------------------------------------------------
+// constants and helper functions
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
 // functions that override default behavior
 // -----------------------------------------------------------------------------
 
@@ -17,14 +21,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // -----------------------------------------------------------------------------
-// constants and helper functions
-// -----------------------------------------------------------------------------
-
-// -----------------------------------------------------------------------------
 // default story. test core functionality, accessibility, and function calls
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
+  globals: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+  },
   play: async ({ canvas, step }) => {
     const logoIcon = canvas.getByLabelText('Return to home page');
 
@@ -47,4 +52,8 @@ export const Default: Story = {
 
 export const Mobile: Story = {
   globals: { viewport: 'mobile1' },
+};
+
+export const Tablet: Story = {
+  globals: { viewport: 'tablet' },
 };

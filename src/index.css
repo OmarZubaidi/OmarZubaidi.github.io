@@ -248,3 +248,25 @@ html:has(body[data-theme='dark']) {
   /* eslint-disable-next-line css/use-baseline */
   mask-composite: subtract;
 }
+
+/* -------------------------------------------------------------------------- */
+
+/* Divider */
+.divider-glyphs::before {
+  content: '৷ ৷ ৷';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-gray);
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Image carousel */
+
+@keyframes scroll {
+  to {
+    transform: translateX(calc(-50% - var(--padding) / 2));
+  }
+}

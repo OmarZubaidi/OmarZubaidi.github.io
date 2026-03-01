@@ -3,6 +3,22 @@ import { expect, fn, userEvent } from 'storybook/test';
 import ToggleTheme from './ToggleTheme';
 
 // -----------------------------------------------------------------------------
+// constants and helper functions
+// -----------------------------------------------------------------------------
+
+type Canvas = Parameters<NonNullable<Story['play']>>[0]['canvas'];
+
+async function assertLightMode(canvas: Canvas) {
+  await expect(document.body.dataset.theme).toBe('light');
+  await expect(canvas.getByTitle('bulb-on')).toBeInTheDocument();
+}
+
+async function assertDarkMode(canvas: Canvas) {
+  await expect(document.body.dataset.theme).toBe('dark');
+  await expect(canvas.getByTitle('bulb-off')).toBeInTheDocument();
+}
+
+// -----------------------------------------------------------------------------
 // functions that override default behavior
 // -----------------------------------------------------------------------------
 
@@ -22,26 +38,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // -----------------------------------------------------------------------------
-// constants and helper functions
-// -----------------------------------------------------------------------------
-
-type Canvas = Parameters<NonNullable<Story['play']>>[0]['canvas'];
-
-async function assertLightMode(canvas: Canvas) {
-  await expect(document.body.dataset.theme).toBe('light');
-  await expect(canvas.getByTitle('bulb-on')).toBeInTheDocument();
-}
-
-async function assertDarkMode(canvas: Canvas) {
-  await expect(document.body.dataset.theme).toBe('dark');
-  await expect(canvas.getByTitle('bulb-off')).toBeInTheDocument();
-}
-
-// -----------------------------------------------------------------------------
 // default story. test core functionality, accessibility, and function calls
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
+  globals: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+  },
   play: async ({ canvas, step }) => {
     const user = userEvent.setup({ skipClick: true });
     const button = canvas.getByRole('button');
@@ -51,6 +56,11 @@ export const Default: Story = {
       await expect(button).toHaveAccessibleName('Dark mode toggle');
       await expect(button.hasAttribute('aria-live')).toBe(true);
       await assertLightMode(canvas);
+    });
+
+    await step('check the button is focusable', async () => {
+      button.focus();
+      await expect(button).toHaveFocus();
     });
 
     await step('check the button is clickable', async () => {
@@ -80,6 +90,14 @@ export const Default: Story = {
 // -----------------------------------------------------------------------------
 // story variants. test arguments and their effects or state changes
 // -----------------------------------------------------------------------------
+
+export const Mobile: Story = {
+  globals: { viewport: 'mobile1' },
+};
+
+export const Tablet: Story = {
+  globals: { viewport: 'tablet' },
+};
 
 export const LightMode: Story = {
   play: async ({ canvas, step }) => {
@@ -123,8 +141,4 @@ export const DarkMode: Story = {
       await assertDarkMode(canvas);
     });
   },
-};
-
-export const Mobile: Story = {
-  globals: { viewport: 'mobile1' },
 };

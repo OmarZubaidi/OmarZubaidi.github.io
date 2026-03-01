@@ -3,6 +3,10 @@ import { expect, fn } from 'storybook/test';
 import Footer from './Footer';
 
 // -----------------------------------------------------------------------------
+// constants and helper functions
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
 // functions that override default behavior
 // -----------------------------------------------------------------------------
 
@@ -22,14 +26,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // -----------------------------------------------------------------------------
-// constants and helper functions
-// -----------------------------------------------------------------------------
-
-// -----------------------------------------------------------------------------
 // default story. test core functionality, accessibility, and function calls
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
+  globals: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+  },
   play: async ({ canvas, step }) => {
     const emailIcon = canvas.getByLabelText('Email me');
     const gitHubIcon = canvas.getByLabelText('Check out my GitHub profile');
@@ -62,6 +67,14 @@ export const Default: Story = {
 // story variants. test arguments and their effects or state changes
 // -----------------------------------------------------------------------------
 
+export const Mobile: Story = {
+  globals: { viewport: 'mobile1' },
+};
+
+export const Tablet: Story = {
+  globals: { viewport: 'tablet' },
+};
+
 export const LightMode: Story = {
   play: async ({ canvas }) => {
     const linkedInBlack = canvas.getByTitle('linkedin-black');
@@ -82,8 +95,4 @@ export const DarkMode: Story = {
     const linkedInWhite = canvas.getByTitle('linkedin-white');
     await expect(linkedInWhite).toBeInTheDocument();
   },
-};
-
-export const Mobile: Story = {
-  globals: { viewport: 'mobile1' },
 };
