@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn } from 'storybook/test';
-import ImageCarousel from './ImageCarousel';
+import LogoCarousel from './LogoCarousel';
 
 // -----------------------------------------------------------------------------
 // constants and helper functions
@@ -21,7 +21,7 @@ const windowMatchMedia = window.matchMedia;
 // -----------------------------------------------------------------------------
 
 const meta = {
-  component: ImageCarousel,
+  component: LogoCarousel,
   args: {
     logos: [
       '990057',
@@ -51,7 +51,7 @@ const meta = {
   afterEach: () => {
     window.matchMedia = windowMatchMedia;
   },
-} satisfies Meta<typeof ImageCarousel>;
+} satisfies Meta<typeof LogoCarousel>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 

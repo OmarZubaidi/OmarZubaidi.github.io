@@ -1,6 +1,6 @@
 import { cloneElement, Fragment, type CSSProperties, type JSX } from 'react';
 
-interface ImageCarouselProps {
+interface LogoCarouselProps {
   /** Array of logos/images to display in the carousel. */
   logos: JSX.Element[];
   /** Number of rows in the carousel (default: 2). */
@@ -20,15 +20,15 @@ interface ImageCarouselProps {
  * alternating between scrolling left and right. Logos loop seamlessly and the
  * animation pauses on hover/focus.
  */
-export default function ImageCarousel({
+export default function LogoCarousel({
   logos,
   rows = 2,
   animationDuration = '20s',
   // height = '200px',
   containerStyle,
-}: ImageCarouselProps) {
+}: LogoCarouselProps) {
   if (logos.length === 0) {
-    throw new Error('ImageCarousel must have at least one logo');
+    throw new Error('LogoCarousel must have at least one logo');
   }
 
   const logosPerRow = Math.ceil(logos.length / rows);
