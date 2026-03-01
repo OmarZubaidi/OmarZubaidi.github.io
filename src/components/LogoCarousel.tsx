@@ -72,8 +72,6 @@ export default function LogoCarousel({
                     animation: `scroll ${animationDuration} linear infinite ${rowIndex % 2 === 0 ? 'normal' : 'reverse'}`,
                   }),
               margin: 0,
-              paddingInline: 0,
-              listStyle: 'none',
               display: 'flex',
               gap: 'var(--padding)',
               paddingBlockEnd: rowIndex < rows - 1 ? 'var(--padding)' : undefined,
