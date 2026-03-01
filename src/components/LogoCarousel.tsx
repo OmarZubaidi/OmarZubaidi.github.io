@@ -15,8 +15,7 @@ interface LogoCarouselProps {
  * Logo grid carousel component
  *
  * A grid of rows where each row scrolls horizontally, with adjacent rows
- * alternating between scrolling left and right. Logos loop seamlessly and the
- * animation pauses on hover/focus.
+ * alternating between scrolling left and right.
  */
 export default function LogoCarousel({
   logos,
