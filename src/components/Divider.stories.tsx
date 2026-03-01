@@ -3,6 +3,10 @@ import { expect } from 'storybook/test';
 import Divider from './Divider';
 
 // -----------------------------------------------------------------------------
+// constants and helper functions
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
 // functions that override default behavior
 // -----------------------------------------------------------------------------
 
@@ -15,10 +19,6 @@ const meta = {
 } satisfies Meta<typeof Divider>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// -----------------------------------------------------------------------------
-// constants and helper functions
-// -----------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------
 // default story. test core functionality, accessibility, and function calls

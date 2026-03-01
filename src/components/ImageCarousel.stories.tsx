@@ -3,7 +3,7 @@ import { expect, fn } from 'storybook/test';
 import ImageCarousel from './ImageCarousel';
 
 // -----------------------------------------------------------------------------
-// Helper function to create image placeholders
+// constants and helper functions
 // -----------------------------------------------------------------------------
 
 const createImagePlaceholder = (color: string, index: number) => (
@@ -54,10 +54,6 @@ const meta = {
 } satisfies Meta<typeof ImageCarousel>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// -----------------------------------------------------------------------------
-// constants and helper functions
-// -----------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------
 // default story. test core functionality, accessibility, and function calls

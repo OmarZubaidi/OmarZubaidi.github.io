@@ -3,6 +3,10 @@ import { expect } from 'storybook/test';
 import TextAndMedia from './TextAndMedia';
 
 // -----------------------------------------------------------------------------
+// constants and helper functions
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
 // functions that override default behavior
 // -----------------------------------------------------------------------------
 
@@ -27,10 +31,6 @@ const meta = {
 } satisfies Meta<typeof TextAndMedia>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// -----------------------------------------------------------------------------
-// constants and helper functions
-// -----------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------
 // default story. test core functionality, accessibility, and function calls
@@ -59,32 +59,6 @@ export const Default: Story = {
 
       await step('check image right edge is to the left of or at text left edge', async () => {
         await expect(imageRect.right).toBeLessThanOrEqual(textRect.left);
-      });
-    });
-  },
-};
-
-export const RightSide: Story = {
-  args: {
-    mediaSide: 'right',
-  },
-  play: async ({ canvas, step }) => {
-    const image = canvas.getByAltText('Placeholder');
-    const text = canvas.getByText('This is a placeholder text alongside the image.');
-
-    await expect(image).toBeVisible();
-    await expect(text).toBeVisible();
-
-    await step('check the image is to the right of the text', async () => {
-      const imageRect = image.getBoundingClientRect();
-      const textRect = text.getBoundingClientRect();
-
-      await step('check image left edge is to the right of text right edge', async () => {
-        await expect(imageRect.left).toBeGreaterThan(textRect.right);
-      });
-
-      await step('check image right edge is to the right of or at text right edge', async () => {
-        await expect(imageRect.right).toBeGreaterThanOrEqual(textRect.right);
       });
     });
   },
@@ -125,6 +99,32 @@ export const Mobile: Story = {
 
 export const Tablet: Story = {
   globals: { viewport: 'tablet' },
+};
+
+export const RightSide: Story = {
+  args: {
+    mediaSide: 'right',
+  },
+  play: async ({ canvas, step }) => {
+    const image = canvas.getByAltText('Placeholder');
+    const text = canvas.getByText('This is a placeholder text alongside the image.');
+
+    await expect(image).toBeVisible();
+    await expect(text).toBeVisible();
+
+    await step('check the image is to the right of the text', async () => {
+      const imageRect = image.getBoundingClientRect();
+      const textRect = text.getBoundingClientRect();
+
+      await step('check image left edge is to the right of text right edge', async () => {
+        await expect(imageRect.left).toBeGreaterThan(textRect.right);
+      });
+
+      await step('check image right edge is to the right of or at text right edge', async () => {
+        await expect(imageRect.right).toBeGreaterThanOrEqual(textRect.right);
+      });
+    });
+  },
 };
 
 export const WithReactComponent: Story = {

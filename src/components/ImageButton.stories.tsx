@@ -4,6 +4,12 @@ import Logo from '../assets/logo.svg?react';
 import ImageButton from './ImageButton';
 
 // -----------------------------------------------------------------------------
+// constants and helper functions
+// -----------------------------------------------------------------------------
+
+const onClickMock = fn();
+
+// -----------------------------------------------------------------------------
 // functions that override default behavior
 // -----------------------------------------------------------------------------
 
@@ -49,12 +55,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // -----------------------------------------------------------------------------
-// constants and helper functions
-// -----------------------------------------------------------------------------
-
-const onClickMock = fn();
-
-// -----------------------------------------------------------------------------
 // default story. test core functionality, accessibility, and function calls
 // -----------------------------------------------------------------------------
 
@@ -84,6 +84,14 @@ export const Default: Story = {
 // -----------------------------------------------------------------------------
 // story variants. test arguments and their effects or state changes
 // -----------------------------------------------------------------------------
+
+export const Mobile: Story = {
+  globals: { viewport: 'mobile1' },
+};
+
+export const Tablet: Story = {
+  globals: { viewport: 'tablet' },
+};
 
 export const OnClickButton: Story = {
   args: {
@@ -195,14 +203,6 @@ export const LogoIcon: Story = {
     await expect(button).toHaveStyle('border-style: none');
     await expect(button).toHaveStyle('color: #212121');
   },
-};
-
-export const Mobile: Story = {
-  globals: { viewport: 'mobile1' },
-};
-
-export const Tablet: Story = {
-  globals: { viewport: 'tablet' },
 };
 
 export const LargeButton: Story = {
