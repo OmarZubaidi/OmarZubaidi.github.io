@@ -35,7 +35,7 @@ export default function ProjectOverview({ id, imageHeight = 'auto', width = 'aut
       }}
     >
       <img
-        src={`/src/assets/project-photos/${projectId}.png`}
+        src={new URL(`../assets/project-photos/${projectId}.png`, import.meta.url).href}
         alt={`${projectDetails.title} screenshot`}
         style={{
           width: '100%',
