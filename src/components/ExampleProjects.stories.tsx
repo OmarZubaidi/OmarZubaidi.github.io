@@ -23,7 +23,7 @@ const meta = {
   argTypes: {
     ids: {
       control: {
-        type: 'select',
+        type: 'multi-select',
         options: projectIds,
       },
     },
