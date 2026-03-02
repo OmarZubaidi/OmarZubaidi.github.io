@@ -1,4 +1,4 @@
-export const projectIds = ['portfolio'] as const;
+export const projectIds = ['portfolio', 'portfolio2', 'portfolio3'] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 // erasableSyntaxOnly disallows enums

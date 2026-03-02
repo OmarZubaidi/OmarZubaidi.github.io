@@ -2,5 +2,13 @@
   "portfolio": {
     "title": "Portfolio",
     "description": "This website you're on now!"
+  },
+  "portfolio2": {
+    "title": "Portfolio2",
+    "description": "Dummy delete me"
+  },
+  "portfolio3": {
+    "title": "Portfolio3",
+    "description": "Dummy delete me"
   }
 }
