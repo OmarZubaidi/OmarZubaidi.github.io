@@ -1,4 +1,4 @@
-export const projectIds = ['portfolio'] as const;
+export const projectIds = ['portfolio', 'portfolio2', 'portfolio3'] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 // erasableSyntaxOnly disallows enums
@@ -13,5 +13,6 @@ export const Errors = {
   LogoCarouselInvalidRows: 'LogoCarousel "rows" must be a positive integer (>= 1).',
   // Helpers
   ProjectNotFound: 'Project with the specified ID not found.',
+  ProjectIdNotUnique: 'Project IDs must be unique.',
   InvalidProjectData: 'Invalid project data.',
 };
