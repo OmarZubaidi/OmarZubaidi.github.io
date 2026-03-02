@@ -1,4 +1,5 @@
 import { cloneElement, Fragment, type CSSProperties, type JSX } from 'react';
+import { Errors } from '../constants';
 
 interface LogoCarouselProps {
   /** Array of logos/images to display in the carousel. */
@@ -6,7 +7,7 @@ interface LogoCarouselProps {
   /** Number of rows in the carousel (default: 2). */
   rows?: number;
   /** Duration of the scrolling animation (default: '20s'). */
-  animationDuration?: string;
+  animationDuration?: CSSProperties['animationDuration'];
   /** Other CSS style attributes for the carousel container. */
   containerStyle?: CSSProperties;
 }
@@ -24,10 +25,10 @@ export default function LogoCarousel({
   containerStyle,
 }: LogoCarouselProps) {
   if (logos.length === 0) {
-    throw new Error('LogoCarousel must have at least one logo');
+    throw new Error(Errors.LogoCarouselNoLogos);
   }
   if (!Number.isInteger(rows) || rows < 1) {
-    throw new Error('LogoCarousel "rows" must be a positive integer (>= 1)');
+    throw new Error(Errors.LogoCarouselInvalidRows);
   }
 
   const logosPerRow = Math.ceil(logos.length / rows);

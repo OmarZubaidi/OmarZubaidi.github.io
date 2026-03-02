@@ -1,5 +1,6 @@
 import { cloneElement, type CSSProperties, type JSX } from 'react';
 import { Link } from 'react-router';
+import { Errors } from '../constants';
 
 interface ImageButtonProps {
   /** Image to display within the button. */
@@ -44,7 +45,7 @@ export default function ImageButton({
   imageStyle,
 }: ImageButtonProps) {
   if (onClick === undefined && link === undefined) {
-    throw new Error('ImageButton must have at least one of onClick or link defined');
+    throw new Error(Errors.ImageButtonMissingProps);
   }
 
   const imageJsx = cloneElement(image, { style: { height, ...imageStyle }, 'aria-hidden': true });

@@ -17,7 +17,14 @@ export default defineConfig({
     coverage: {
       enabled: true,
       reportOnFailure: true,
-      exclude: [...configDefaults.exclude, '**/index.tsx', '**/eslint.config.js', '**/.storybook/**', '**/coverage/**'],
+      exclude: [
+        ...configDefaults.exclude,
+        '**/index.tsx',
+        '**/constants.ts',
+        '**/eslint.config.js',
+        '**/.storybook/**',
+        '**/coverage/**',
+      ],
       thresholds: {
         100: true,
       },

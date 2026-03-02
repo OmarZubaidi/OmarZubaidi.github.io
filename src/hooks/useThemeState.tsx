@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { Errors } from '../constants';
 
 type ThemeValue = 'light' | 'dark';
 
@@ -12,7 +13,7 @@ const ThemeStateContext = createContext<ThemeContextValue | null>(null);
 export const useThemeState = () => {
   const context = useContext(ThemeStateContext);
   if (!context) {
-    throw new Error('useThemeState must be used within ThemeStateProvider');
+    throw new Error(`useThemeState: ${Errors.StateProviderMissing}`);
   }
   return context;
 };
