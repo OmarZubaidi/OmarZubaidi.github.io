@@ -4,7 +4,7 @@ import type { ProjectId } from '../constants';
 import ProjectOverview from './ProjectOverview';
 
 describe(ProjectOverview, () => {
-  it('throws error when both project ID is invalid', () => {
+  it('throws when the project ID is invalid', () => {
     expect.hasAssertions();
     expect(() => {
       render(<ProjectOverview id={'invalid-id' as ProjectId} />);

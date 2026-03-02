@@ -8,7 +8,7 @@ function MissingProvider() {
 }
 
 describe(useThemeState, () => {
-  it('throws error when context is missing', () => {
+  it('throws when context is missing', () => {
     expect.hasAssertions();
     expect(() => render(<MissingProvider />)).toThrow('useThemeState: State must be used within StateProvider');
   });

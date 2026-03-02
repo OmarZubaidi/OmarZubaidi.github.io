@@ -4,7 +4,7 @@ import Logo from '../assets/logo.svg?react';
 import ImageButton from './ImageButton';
 
 describe(ImageButton, () => {
-  it('throws error when both onClick and link are undefined', () => {
+  it('throws when both onClick and link are undefined', () => {
     expect.hasAssertions();
     expect(() => {
       render(<ImageButton image={<Logo />} label="Test button" />);
