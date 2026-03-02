@@ -87,7 +87,6 @@ h6 {
 
 /* Global variables */
 html {
-  --_color-primary: #ff0091;
   --_color-secondary-light: #990057;
   --_color-secondary-dark: #ff8acc;
   --_color-text: #212121;
@@ -112,7 +111,7 @@ html {
 /* https://caniuse.com/css-has 92.8% adoption rate as of 2025-06-28 */
 /* eslint-disable-next-line css/use-baseline */
 html:has(body[data-theme='light']) {
-  --color-primary: var(--_color-primary);
+  --color-primary: #e0007f;
   --color-secondary: var(--_color-secondary-light);
   --color-text: var(--_color-text);
   --color-background: var(--_color-background);
@@ -126,7 +125,7 @@ html:has(body[data-theme='light']) {
 
 /* eslint-disable-next-line css/use-baseline */
 html:has(body[data-theme='dark']) {
-  --color-primary: var(--_color-primary);
+  --color-primary: #ff1a9c;
   --color-secondary: var(--_color-secondary-dark);
   --color-text: var(--_color-background);
   --color-background: var(--_color-text);
@@ -136,6 +135,17 @@ html:has(body[data-theme='dark']) {
   color: var(--color-text);
   background-color: var(--color-background);
   /* eslint-enable css/no-invalid-properties */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* Set in theming above */
+
+  color: var(--color-primary);
 }
 
 /* -------------------------------------------------------------------------- */
