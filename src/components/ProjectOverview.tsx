@@ -71,7 +71,7 @@ export default function ProjectOverview({ id, imageHeight = 'auto', width = 'aut
             marginInlineStart: 'var(--margin)',
             fontWeight: 'bolder',
             fontSize: '1.25rem',
-            color: 'var(--text)',
+            color: 'var(--color-text)',
           }}
         >
           {'>'}
