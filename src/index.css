@@ -94,7 +94,6 @@ html {
 
   --color-gray: #bfbfbf;
   --color-gray-2: #bebebe;
-  --color-accent: #bf82fd;
 
   --border-radius-sm: 0.5rem;
   --border-radius-md: 1rem;
@@ -113,6 +112,7 @@ html {
 html:has(body[data-theme='light']) {
   --color-primary: #e0007f;
   --color-secondary: var(--_color-secondary-light);
+  --color-accent: #9e3ffd;
   --color-text: var(--_color-text);
   --color-background: var(--_color-background);
   color-scheme: light;
@@ -127,6 +127,7 @@ html:has(body[data-theme='light']) {
 html:has(body[data-theme='dark']) {
   --color-primary: #ff1a9c;
   --color-secondary: var(--_color-secondary-dark);
+  --color-accent: #bf82fd;
   --color-text: var(--_color-background);
   --color-background: var(--_color-text);
   color-scheme: dark;
