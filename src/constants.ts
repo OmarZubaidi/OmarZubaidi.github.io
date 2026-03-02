@@ -13,5 +13,6 @@ export const Errors = {
   LogoCarouselInvalidRows: 'LogoCarousel "rows" must be a positive integer (>= 1).',
   // Helpers
   ProjectNotFound: 'Project with the specified ID not found.',
+  ProjectIdNotUnique: 'Project IDs must be unique.',
   InvalidProjectData: 'Invalid project data.',
 };

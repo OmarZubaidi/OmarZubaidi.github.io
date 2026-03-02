@@ -10,4 +10,11 @@ describe(ExampleProjects, () => {
       render(<ExampleProjects ids={['invalid-id'] as unknown as ProjectId[]} />);
     }).toThrow('Project with the specified ID not found.');
   });
+
+  it('throws when the project IDs are not unique', () => {
+    expect.hasAssertions();
+    expect(() => {
+      render(<ExampleProjects ids={['portfolio', 'portfolio'] as unknown as ProjectId[]} />);
+    }).toThrow('Project IDs must be unique.');
+  });
 });

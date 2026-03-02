@@ -24,6 +24,10 @@ export default function ExampleProjects({ ids, width = '400px' }: ExampleProject
   if (!ids.every((id) => projectIds.includes(id))) {
     throw new Error(Errors.ProjectNotFound);
   }
+  if (new Set(ids).size !== ids.length) {
+    throw new Error(Errors.ProjectIdNotUnique);
+  }
+
   const projectDetailsMap = new Map(ids.map((id) => [id, getProjectDetails(id)]));
 
   return (
