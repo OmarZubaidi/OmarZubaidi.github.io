@@ -27,7 +27,7 @@ export default function ExampleProjects({ ids, width = '400px' }: ExampleProject
   const projectDetailsMap = new Map(ids.map((id) => [id, getProjectDetails(id)]));
 
   return (
-    <div aria-label="Screenshots of example projects overlapping each other" style={{ maxWidth: width }}>
+    <div aria-label="Screenshots of example projects overlapping each other" role="group" style={{ maxWidth: width }}>
       {/* div in a div to use percentages */}
       <div
         style={{
