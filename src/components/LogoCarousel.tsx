@@ -7,7 +7,7 @@ interface LogoCarouselProps {
   /** Number of rows in the carousel (default: 2). */
   rows?: number;
   /** Duration of the scrolling animation (default: '20s'). */
-  animationDuration?: string;
+  animationDuration?: CSSProperties['animationDuration'];
   /** Other CSS style attributes for the carousel container. */
   containerStyle?: CSSProperties;
 }

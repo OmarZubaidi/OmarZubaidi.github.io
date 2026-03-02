@@ -12,7 +12,7 @@ export default function Divider() {
       <hr
         style={{
           border: 'none',
-          borderTop: '1px solid var(--color-gray)',
+          borderBlockStart: '1px solid var(--color-gray)',
           margin: 0,
           width: '100%',
         }}
